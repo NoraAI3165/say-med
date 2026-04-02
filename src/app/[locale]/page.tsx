@@ -30,10 +30,10 @@ export default function HomePage() {
   const t = useTranslations('home');
 
   const stats = [
-    { value: '25+', labelKey: 'yearsExperience', icon: Award },
-    { value: '120+', labelKey: 'countriesServed', icon: Globe },
-    { value: '5000+', labelKey: 'vesselsSupplied', icon: Ship },
-    { value: '24/7', labelKey: 'support', icon: Clock },
+    { value: '4', labelKey: 'globalOffices', icon: Globe },
+    { value: '43+', labelKey: 'flagStates', icon: Ship },
+    { value: '3', labelKey: 'languages', icon: Award },
+    { value: '100%', labelKey: 'compliance', icon: Clock },
   ];
 
   const serviceHighlights = [
