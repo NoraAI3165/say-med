@@ -14,7 +14,7 @@ function project(lat: number, lng: number): { x: number; y: number } {
 
 // Country flag image URL from flagcdn.com (free, no attribution)
 function flagUrl(code: string): string {
-  return `https://flagcdn.com/w40/${code.toLowerCase()}.png`;
+  return `/flags/${code.toLowerCase()}.svg`;
 }
 
 export default function WorldMap({

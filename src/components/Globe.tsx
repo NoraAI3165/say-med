@@ -118,7 +118,7 @@ function GlobeMarker({
           <div className="bg-navy/95 backdrop-blur-sm border border-gold/30 rounded-lg px-4 py-2.5 whitespace-nowrap shadow-2xl">
             <div className="flex items-center gap-2">
               <img
-                src={`/flags/${country.code.toLowerCase()}.png`}
+                src={`/flags/${country.code.toLowerCase()}.svg`}
                 alt=""
                 className="w-6 h-4 rounded-sm object-cover"
               />

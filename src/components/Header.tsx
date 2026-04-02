@@ -87,7 +87,7 @@ export default function Header() {
                 onClick={() => setLangOpen(!langOpen)}
                 className="flex items-center gap-2 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-all text-sm"
               >
-                <img src={`/flags/${localeFlagCodes[locale]}.png`} alt="" className="w-5 h-3.5 rounded-sm object-cover" />
+                <img src={`/flags/${localeFlagCodes[locale]}.svg`} alt="" className="w-5 h-3.5 rounded-sm object-cover" />
                 <span>{localeNames[locale]}</span>
                 <ChevronDown className={clsx('w-3 h-3 transition-transform', langOpen && 'rotate-180')} />
               </button>
@@ -104,7 +104,7 @@ export default function Header() {
                           : 'text-white/70 hover:text-white hover:bg-white/5'
                       )}
                     >
-                      <img src={`/flags/${localeFlagCodes[loc]}.png`} alt="" className="w-6 h-4 rounded-sm object-cover" />
+                      <img src={`/flags/${localeFlagCodes[loc]}.svg`} alt="" className="w-6 h-4 rounded-sm object-cover" />
                       {localeNames[loc]}
                     </button>
                   ))}
@@ -160,7 +160,7 @@ export default function Header() {
                     loc === locale ? 'text-gold bg-gold/10' : 'text-white/60 hover:text-white'
                   )}
                 >
-                  <img src={`/flags/${localeFlagCodes[loc]}.png`} alt="" className="w-5 h-3.5 rounded-sm object-cover" />
+                  <img src={`/flags/${localeFlagCodes[loc]}.svg`} alt="" className="w-5 h-3.5 rounded-sm object-cover" />
                   {loc.toUpperCase()}
                 </button>
               ))}

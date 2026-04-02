@@ -65,7 +65,7 @@ export default function RegulationsPage() {
                     }`}
                   >
                     <Image
-                      src={`/flags/${fs.code.toLowerCase()}.png`}
+                      src={`/flags/${fs.code.toLowerCase()}.svg`}
                       alt={fs.name}
                       width={20}
                       height={14}
@@ -86,7 +86,7 @@ export default function RegulationsPage() {
                   <div className="p-6 bg-gold/5 border-b border-gold/10">
                     <div className="flex items-center gap-4">
                       <Image
-                        src={`/flags/${selected.code.toLowerCase()}.png`}
+                        src={`/flags/${selected.code.toLowerCase()}.svg`}
                         alt={selected.name}
                         width={60}
                         height={40}
@@ -233,7 +233,7 @@ export default function RegulationsPage() {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <Image
-                    src={`/flags/${fs.code.toLowerCase()}.png`}
+                    src={`/flags/${fs.code.toLowerCase()}.svg`}
                     alt={fs.name}
                     width={32}
                     height={22}
