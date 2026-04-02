@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function CookieConsent() {
   const t = useTranslations('cookie');
+  const locale = useLocale();
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -28,7 +29,10 @@ export default function CookieConsent() {
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6">
       <div className="max-w-4xl mx-auto bg-navy border border-gold/20 rounded-2xl shadow-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <p className="text-white/70 text-sm flex-1 leading-relaxed">
-          {t('message')}
+          {t('message')}{' '}
+          <a href={`/${locale}/privacy`} className="text-gold underline underline-offset-2 hover:text-gold-light">
+            {t('privacyLink')}
+          </a>
         </p>
         <div className="flex items-center gap-3 shrink-0">
           <button

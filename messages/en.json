@@ -211,7 +211,7 @@
     "email": "Email",
     "office": "Head Office",
     "ourOffices": "Our Global Offices",
-    "available247": "Available 24/7 for emergencies",
+    "available247": "Mon-Fri 09:00 - 18:00",
     "formTitle": "Send Us a Message",
     "name": "Full Name",
     "emailLabel": "Email Address",
@@ -520,7 +520,8 @@
     "terms": "Terms & Conditions"
   },
   "cookie": {
-    "message": "We use cookies to improve your experience. By continuing to browse, you agree to our use of cookies.",
+    "message": "We use cookies to improve your experience. By continuing to browse, you agree to our use of cookies. Read our",
+    "privacyLink": "Privacy Policy",
     "accept": "Accept",
     "decline": "Decline"
   }

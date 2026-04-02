@@ -211,7 +211,7 @@
     "email": "E-mail",
     "office": "Hoofdkantoor",
     "ourOffices": "Onze Kantoren",
-    "available247": "24/7 beschikbaar voor noodgevallen",
+    "available247": "Ma-Vr 09:00 - 18:00",
     "formTitle": "Stuur Ons een Bericht",
     "name": "Volledige Naam",
     "emailLabel": "E-mailadres",
@@ -520,7 +520,8 @@
     "terms": "Voorwaarden"
   },
   "cookie": {
-    "message": "Wij gebruiken cookies om uw ervaring te verbeteren. Door verder te bladeren gaat u akkoord met ons cookiegebruik.",
+    "message": "Wij gebruiken cookies om uw ervaring te verbeteren. Door verder te bladeren gaat u akkoord met ons cookiegebruik. Lees ons",
+    "privacyLink": "Privacybeleid",
     "accept": "Accepteren",
     "decline": "Weigeren"
   }

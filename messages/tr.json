@@ -211,7 +211,7 @@
     "email": "E-posta",
     "office": "Merkez Ofis",
     "ourOffices": "Ofislerimiz",
-    "available247": "Acil durumlar için 7/24 erişilebilir",
+    "available247": "Pzt-Cum 09:00 - 18:00",
     "formTitle": "Bize Mesaj Gönderin",
     "name": "Ad Soyad",
     "emailLabel": "E-posta Adresi",
@@ -520,7 +520,8 @@
     "terms": "Şartlar ve Koşullar"
   },
   "cookie": {
-    "message": "Deneyiminizi iyilestirmek icin cerezler kullaniyoruz. Sitemize goz atmaya devam ederek cerez kullanimini kabul etmis olursunuz.",
+    "message": "Deneyiminizi iyilestirmek icin cerezler kullaniyoruz. Goz atmaya devam ederek cerez kullanimini kabul etmis olursunuz.",
+    "privacyLink": "Gizlilik Politikasi",
     "accept": "Kabul Et",
     "decline": "Reddet"
   }
