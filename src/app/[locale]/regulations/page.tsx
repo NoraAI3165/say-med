@@ -110,14 +110,22 @@ export default function RegulationsPage() {
                       </div>
                     </div>
 
-                    {/* Regulation */}
-                    <div className="flex items-start gap-3">
+                    {/* Regulation - clickable link */}
+                    <a
+                      href={selected.keyDocuments[0]?.url || selected.authorityUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start gap-3 p-3 -mx-3 rounded-xl hover:bg-gold/10 transition-colors group cursor-pointer"
+                    >
                       <FileText className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                      <div>
+                      <div className="flex-1">
                         <div className="text-white/40 text-xs font-medium mb-1">{t('regulationName')}</div>
-                        <div className="text-white text-sm">{selected.regulation}</div>
+                        <div className="text-gold group-hover:text-gold-light text-sm font-medium underline underline-offset-2">
+                          {selected.regulation}
+                        </div>
                       </div>
-                    </div>
+                      <ExternalLink className="w-4 h-4 text-gold/50 group-hover:text-gold shrink-0 mt-1" />
+                    </a>
 
                     {/* Inspection */}
                     <div className="flex items-start gap-3">
