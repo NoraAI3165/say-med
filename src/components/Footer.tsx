@@ -17,11 +17,11 @@ export default function Footer() {
           <div>
             <div className="mb-6">
               <Image
-                src="/logos/logo-white.svg"
+                src="/logos/logo-wide-white.svg"
                 alt="Say-Med"
-                width={220}
-                height={70}
-                className="h-16 w-auto"
+                width={768}
+                height={248}
+                className="w-full max-w-[260px] h-auto"
               />
             </div>
             <p className="text-sm leading-relaxed mb-6">

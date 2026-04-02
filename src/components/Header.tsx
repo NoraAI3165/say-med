@@ -14,10 +14,10 @@ const localeNames: Record<string, string> = {
   nl: 'Nederlands',
 };
 
-const localeFlags: Record<string, string> = {
-  en: '\u{1F1EC}\u{1F1E7}',
-  tr: '\u{1F1F9}\u{1F1F7}',
-  nl: '\u{1F1F3}\u{1F1F1}',
+const localeFlagCodes: Record<string, string> = {
+  en: 'gb',
+  tr: 'tr',
+  nl: 'nl',
 };
 
 export default function Header() {
@@ -41,10 +41,8 @@ export default function Header() {
   ];
 
   function switchLocale(newLocale: string) {
-    // Build new path: /{newLocale} + path without current locale
     const newPath = `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
-    nextRouter.push(newPath);
-    setLangOpen(false);
+    window.location.href = newPath;
   }
 
   return (
@@ -89,8 +87,8 @@ export default function Header() {
                 onClick={() => setLangOpen(!langOpen)}
                 className="flex items-center gap-2 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-all text-sm"
               >
-                <Globe className="w-4 h-4" />
-                <span>{localeFlags[locale]} {localeNames[locale]}</span>
+                <img src={`/flags/${localeFlagCodes[locale]}.png`} alt="" className="w-5 h-3.5 rounded-sm object-cover" />
+                <span>{localeNames[locale]}</span>
                 <ChevronDown className={clsx('w-3 h-3 transition-transform', langOpen && 'rotate-180')} />
               </button>
               {langOpen && (
@@ -106,7 +104,7 @@ export default function Header() {
                           : 'text-white/70 hover:text-white hover:bg-white/5'
                       )}
                     >
-                      <span className="text-lg">{localeFlags[loc]}</span>
+                      <img src={`/flags/${localeFlagCodes[loc]}.png`} alt="" className="w-6 h-4 rounded-sm object-cover" />
                       {localeNames[loc]}
                     </button>
                   ))}
@@ -156,13 +154,14 @@ export default function Header() {
               {(['en', 'tr', 'nl'] as const).map((loc) => (
                 <button
                   key={loc}
-                  onClick={() => { switchLocale(loc); setMobileOpen(false); }}
+                  onClick={() => switchLocale(loc)}
                   className={clsx(
-                    'px-3 py-2 rounded-lg text-sm',
+                    'flex items-center gap-2 px-3 py-2 rounded-lg text-sm',
                     loc === locale ? 'text-gold bg-gold/10' : 'text-white/60 hover:text-white'
                   )}
                 >
-                  {localeFlags[loc]} {loc.toUpperCase()}
+                  <img src={`/flags/${localeFlagCodes[loc]}.png`} alt="" className="w-5 h-3.5 rounded-sm object-cover" />
+                  {loc.toUpperCase()}
                 </button>
               ))}
             </div>
