@@ -153,13 +153,13 @@ export default function RegulationsPage() {
                         {selected.keyDocuments.map((doc, i) => (
                           <a
                             key={i}
-                            href={selected.authorityUrl}
+                            href={doc.url}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-2 p-2 rounded-lg bg-white/5 hover:bg-gold/10 border border-white/5 hover:border-gold/20 transition-all group"
                           >
                             <FileText className="w-4 h-4 text-gold/60 group-hover:text-gold shrink-0" />
-                            <span className="text-white/70 text-sm group-hover:text-white flex-1">{doc}</span>
+                            <span className="text-white/70 text-sm group-hover:text-white flex-1">{doc.name}</span>
                             <Download className="w-3.5 h-3.5 text-white/30 group-hover:text-gold shrink-0" />
                           </a>
                         ))}

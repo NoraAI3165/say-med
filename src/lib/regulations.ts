@@ -1,3 +1,8 @@
+export interface RegDocument {
+  name: string;
+  url: string;
+}
+
 export interface FlagState {
   code: string;
   name: string;
@@ -9,7 +14,7 @@ export interface FlagState {
   standardKey: string;
   chestCategories: string[];
   inspectionInterval: string;
-  keyDocuments: string[];
+  keyDocuments: RegDocument[];
   authorityUrl: string;
   details: string;
 }
@@ -21,12 +26,15 @@ export const flagStates: FlagState[] = [
     flag: '\u{1F1F5}\u{1F1E6}',
     lat: 9.0,
     lng: -79.5,
-    regulation: 'Merchant Marine Circular MMC-155',
+    regulation: 'Merchant Marine Circular MMC-339',
     authority: 'Panama Maritime Authority (AMP)',
-    standardKey: 'PMA-MMC-155',
+    standardKey: 'PMA-MMC-339',
     chestCategories: ['Category A - Ocean-going vessels', 'Category B - Coastal vessels', 'Category C - Port/harbor vessels'],
     inspectionInterval: 'Annual inspection required',
-    keyDocuments: ['MMC-155 Medical Equipment Requirements', 'STCW Medical First Aid Training', 'ILO MLC 2006 Compliance'],
+    keyDocuments: [
+      { name: 'MMC-339 Medicine Chest & Medical Equipment', url: 'https://www.panamashipregistry.com/wp-content/uploads/2021/03/MMC-339-MEDICINE-CHEST-AND-MEDICAL-EQUIPMENT.MARCH_.2021-rev.RB_.pdf' },
+      { name: 'ILO MLC 2006 Convention (Full Text)', url: 'https://www.ilo.org/media/267866/download' },
+    ],
     authorityUrl: 'https://amp.gob.pa',
     details: 'Panama requires medical chests categorized by vessel type and trading area. Category A vessels (unlimited trading) must carry the most comprehensive medical supplies including controlled substances. All medications must be clearly labeled in English and Spanish.',
   },
@@ -36,12 +44,15 @@ export const flagStates: FlagState[] = [
     flag: '\u{1F1F1}\u{1F1F7}',
     lat: 6.4,
     lng: -9.4,
-    regulation: 'Marine Notice MLC-003 Rev. 2',
+    regulation: 'Marine Notice MLC-005 Medical Stores',
     authority: 'Liberian Maritime Authority (LiMA)',
-    standardKey: 'LIMA-MLC003',
+    standardKey: 'LIMA-MLC005',
     chestCategories: ['Scale I - International voyages', 'Scale II - Near-coastal voyages', 'Scale III - Harbor/inland'],
     inspectionInterval: 'Annual inspection, quarterly self-checks',
-    keyDocuments: ['Marine Notice MLC-003', 'Medical Stores Scale I/II/III Lists', 'Controlled Substances Authorization Form'],
+    keyDocuments: [
+      { name: 'Marine Notice MLC-005 Medical Stores', url: 'https://seafarma.eu/wp-content/uploads/2024/02/Liberia-Marine-Notice-MLC-005.pdf' },
+      { name: 'MLC-001 General MLC Requirements', url: 'https://www.liscr.com/sites/default/files/online_library/MLC-001.pdf' },
+    ],
     authorityUrl: 'https://www.liscr.com',
     details: 'Liberia follows ILO MLC 2006 guidelines closely. Medical stores must be inspected annually by a qualified pharmacist or medical practitioner. Vessels must maintain a Medicine Chest Inspection Certificate valid for 12 months.',
   },
@@ -56,7 +67,10 @@ export const flagStates: FlagState[] = [
     standardKey: 'RMI-MI108',
     chestCategories: ['Category A - Unlimited voyages', 'Category B - Near-coastal', 'Category C - Sheltered waters'],
     inspectionInterval: 'Annual inspection required',
-    keyDocuments: ['MI-108 Medical Stores Requirements', 'MN-7-042 Medical Fitness Certificates', 'Approved Medical Chest Supplier List'],
+    keyDocuments: [
+      { name: 'MI-108 Medical Stores Requirements', url: 'https://www.register-iri.com/wp-content/uploads/MI-108.pdf' },
+      { name: 'MN-7-042-1 Medical Fitness Certificates', url: 'https://www.register-iri.com/wp-content/uploads/MN-7-042-1.pdf' },
+    ],
     authorityUrl: 'https://www.register-iri.com',
     details: 'RMI requires all vessels to carry medical stores appropriate to their trading area. Medical chests must be supplied and inspected by RMI-approved suppliers. The Medical Stores Certificate must be carried onboard.',
   },
@@ -71,7 +85,10 @@ export const flagStates: FlagState[] = [
     standardKey: 'BMA-B158',
     chestCategories: ['Category A - All waters', 'Category B - Restricted areas', 'Category C - Near-coastal'],
     inspectionInterval: 'Annual inspection by approved supplier',
-    keyDocuments: ['BMA Bulletin 158 Medical Stores', 'BMA Medical Scales A/B/C', 'BMA Approved Service Providers'],
+    keyDocuments: [
+      { name: 'BMA MN041 Medical Stores Notice', url: 'https://www.bahamasmaritime.com/wp-content/uploads/2023/10/MN041-Medical-Stores.pdf' },
+      { name: 'BMA Bulletins Archive', url: 'https://www.bahamasmaritime.com/notices/bulletins/' },
+    ],
     authorityUrl: 'https://www.bahamasmaritime.com',
     details: 'The Bahamas Maritime Authority requires medical stores based on vessel type, crew size, and trading area. All pharmaceutical items must have a minimum 12-month shelf life at time of supply.',
   },
@@ -86,7 +103,11 @@ export const flagStates: FlagState[] = [
     standardKey: 'TM-EU92',
     chestCategories: ['Category A - Unlimited navigation', 'Category B - Less than 175 nm from port', 'Category C - Port operations/coastal'],
     inspectionInterval: 'Annual inspection, 5-year renewal',
-    keyDocuments: ['S.L. 234.46 Medical Stores Rules', 'EU Directive 92/29/EEC Annex I & II', 'Transport Malta Circular 60/2019'],
+    keyDocuments: [
+      { name: 'S.L. 234.51 MLC Rules', url: 'https://www.transport.gov.mt/S-L-234-51.pdf-f5982' },
+      { name: 'EU Directive 92/29/EEC Full Text', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01992L0029-20190726' },
+      { name: 'Medical Stores Labelling Notice', url: 'https://www.transport.gov.mt/maritime/merchant-shipping-notices/technical-notices/technical-notice-sls-32-labelling-of-medical-stores-2560' },
+    ],
     authorityUrl: 'https://www.transport.gov.mt',
     details: 'Malta follows EU Directive 92/29/EEC for medical supplies on board vessels. Three categories of medical chest are defined based on the vessel distance from qualified medical care. Anti-malarial medications required for tropical voyages.',
   },
@@ -101,7 +122,10 @@ export const flagStates: FlagState[] = [
     standardKey: 'DMS-CY-2015',
     chestCategories: ['Category A - Unlimited voyages', 'Category B - Less than 175 nm', 'Category C - Coastal/harbor'],
     inspectionInterval: 'Annual inspection required',
-    keyDocuments: ['Cyprus Medical Stores Rules 2015', 'EU Directive 92/29/EEC Implementation', 'DMS Circular 14/2015'],
+    keyDocuments: [
+      { name: 'DMS Circulars (Medical Stores)', url: 'https://www.dms.gov.cy/dms/shipping.nsf/All/38B6D4BC8D398A41C22586570027BB45?OpenDocument' },
+      { name: 'EU Directive 92/29/EEC', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01992L0029-20190726' },
+    ],
     authorityUrl: 'https://www.dms.gov.cy',
     details: 'Cyprus implements EU Directive 92/29/EEC with additional national requirements. Medical chests must be inspected by approved service providers. Vessels carrying dangerous goods need additional antidotes.',
   },
@@ -116,7 +140,9 @@ export const flagStates: FlagState[] = [
     standardKey: 'NMA-FOR439',
     chestCategories: ['Category 1 - Ocean-going ships', 'Category 2 - Ships in European trade', 'Category 3 - Coastal vessels', 'Category 4 - Fishing vessels'],
     inspectionInterval: 'Annual inspection by approved pharmacy',
-    keyDocuments: ['FOR-2001-03-09-439 Full Regulation', 'NMA Approved Pharmacy List', 'Medical Equipment Annex A/B/C/D'],
+    keyDocuments: [
+      { name: 'FOR-2001-03-09-439 Full Regulation (EN)', url: 'https://www.sdir.no/siteassets/engelske-forskrifter-pdf/9-march-2001-no.-439-medical-supplies-on-ships.pdf' },
+    ],
     authorityUrl: 'https://www.sdir.no',
     details: 'Norway has one of the most detailed maritime medical regulations in Europe with four categories. Medical chests must be inspected by NMA-approved pharmacies. Norwegian requirements often exceed EU minimum standards.',
   },
@@ -131,7 +157,11 @@ export const flagStates: FlagState[] = [
     standardKey: 'MCA-MSN1768',
     chestCategories: ['Category A - Unlimited voyages', 'Category B - Within 150 nm', 'Category C - Within 25 nm/inland'],
     inspectionInterval: 'Annual inspection required',
-    keyDocuments: ['MSN 1768 (M+F) Amendment 3', 'MGN 261 (M+F) Ships Medical Stores', 'Merchant Shipping Medical Stores Regulations 1995'],
+    keyDocuments: [
+      { name: 'MSN 1768 Ship Medical Stores', url: 'https://www.gov.uk/government/publications/msn-1768-applying-the-ships-medical-stores-regulations-1995' },
+      { name: 'MSN 1768 Corrigendum', url: 'https://www.gov.uk/government/publications/msn-1768-corrigendum' },
+      { name: 'MLC 2006 Guidance (Reg 4.1)', url: 'https://www.gov.uk/guidance/mlc-2006-titles-1-to-5-regulations-guidance-and-information' },
+    ],
     authorityUrl: 'https://www.gov.uk/mca',
     details: 'The UK MCA requires medical stores per MSN 1768 with three categories based on trading area. Controlled drugs require Home Office authorization. The Ship Captain Medical Guide (SCMG) must be carried onboard. Post-Brexit, UK requirements have diverged slightly from EU standards.',
   },
@@ -146,7 +176,9 @@ export const flagStates: FlagState[] = [
     standardKey: 'ILT-BMU',
     chestCategories: ['Category A - Unlimited voyages', 'Category B - Within 175 nm', 'Category C - Coastal/harbor'],
     inspectionInterval: 'Annual inspection by approved supplier',
-    keyDocuments: ['Besluit Medische Uitrusting (BMU)', 'Regeling Medische Uitrusting', 'ILT Approved Supplier List'],
+    keyDocuments: [
+      { name: 'Besluit Medische Uitrusting (wetten.nl)', url: 'https://wetten.overheid.nl/BWBR0007663/2001-08-01' },
+    ],
     authorityUrl: 'https://www.ilent.nl',
     details: 'The Netherlands implements EU Directive 92/29/EEC through national legislation. Medical chests must be supplied and inspected by ILT-approved suppliers. Dutch requirements include additional provisions for narcotic substances, requiring a separate DEA-equivalent authorization.',
   },
@@ -161,7 +193,10 @@ export const flagStates: FlagState[] = [
     standardKey: 'HCG-PD376',
     chestCategories: ['Category A - Unlimited voyages', 'Category B - Near-coastal', 'Category C - Harbor vessels'],
     inspectionInterval: 'Annual inspection required',
-    keyDocuments: ['PD 376/1995 Medical Equipment', 'EU Directive 92/29/EEC Greek Implementation', 'HCG Circular on Medical Stores'],
+    keyDocuments: [
+      { name: 'EU Directive 92/29/EEC (Medical Treatment on Board)', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01992L0029-20190726' },
+      { name: 'EU-OSHA Directive Overview', url: 'https://osha.europa.eu/en/legislation/directives/17' },
+    ],
     authorityUrl: 'https://www.hcg.gr',
     details: 'Greece, as one of the largest flag states, implements EU medical requirements through PD 376/1995. The Hellenic Coast Guard oversees compliance. Certain medications require Greek-language labeling for vessels with Greek-speaking crew.',
   },
@@ -176,7 +211,10 @@ export const flagStates: FlagState[] = [
     standardKey: 'MPA-MSR2014',
     chestCategories: ['Scale A - Unlimited voyages', 'Scale B - Near-coastal trade', 'Scale C - Harbor craft'],
     inspectionInterval: 'Annual inspection, 5-year certificate renewal',
-    keyDocuments: ['MS (Medical Stores) Rules 2014', 'MPA Shipping Circular SC18-05', 'MPA Approved Medical Providers List'],
+    keyDocuments: [
+      { name: 'MS (Medical Stores) Rules 2014', url: 'https://sso.agc.gov.sg/SL/MSMLCA2014-S181-2014?DocDate=20140311' },
+      { name: 'MPA Maritime Legislation', url: 'https://www.mpa.gov.sg/regulations-advisory/maritime-legislation-of-singapore/merchant-shipping-act' },
+    ],
     authorityUrl: 'https://www.mpa.gov.sg',
     details: 'Singapore MPA requires medical stores per three scales. As a major port state, Singapore has stringent requirements. All vessels calling at Singapore are subject to PSC inspections which include medical store checks.',
   },
@@ -191,7 +229,10 @@ export const flagStates: FlagState[] = [
     standardKey: 'HKMD-MSR',
     chestCategories: ['Scale A - International voyages', 'Scale B - Near-coastal'],
     inspectionInterval: 'Annual inspection by approved pharmacist',
-    keyDocuments: ['MS (Safety) (Medical Stores) Regulation', 'Marine Department Notice No. 152', 'Approved Pharmacist List'],
+    keyDocuments: [
+      { name: 'MLC FAQ & Guidance', url: 'https://www.mardep.gov.hk/filemanager/en/share/faq/pdf/mlc190222.pdf' },
+      { name: 'HK Shipping Legislation', url: 'https://www.mardep.gov.hk/en/legislation/shipping-ordinances/index.html' },
+    ],
     authorityUrl: 'https://www.mardep.gov.hk',
     details: 'Hong Kong follows UK-derived maritime medical standards with local adaptations. Two scales of medical stores are defined. All medications must have at least 6 months remaining shelf life at time of inspection.',
   },
@@ -206,7 +247,10 @@ export const flagStates: FlagState[] = [
     standardKey: 'DMA-O1007',
     chestCategories: ['Category A - Unlimited voyages', 'Category B - European waters', 'Category C - Coastal', 'Category CR - Passenger rescue vessels'],
     inspectionInterval: 'Annual inspection by approved pharmacy',
-    keyDocuments: ['DMA Order 1007 Medical Equipment', 'DMA Technical Regulation on Medical Stores', 'DMA Approved Pharmacy List'],
+    keyDocuments: [
+      { name: 'BEK 844 Skibsmedicinkister', url: 'https://www.retsinformation.dk/eli/lta/1998/844' },
+      { name: 'DMA Orders & Legislation', url: 'https://www.dma.dk/growth-and-framework-conditions/rules-and-legislation/orders' },
+    ],
     authorityUrl: 'https://www.dma.dk',
     details: 'Denmark has comprehensive medical requirements with four categories. The Danish Maritime Authority requires annual pharmacy inspections. Danish flag vessels must also carry the International Medical Guide for Ships (IMGS).',
   },
@@ -221,7 +265,10 @@ export const flagStates: FlagState[] = [
     standardKey: 'ICG-DM279',
     chestCategories: ['Category A - Ocean-going vessels', 'Category B - Mediterranean trade', 'Category C - Coastal navigation'],
     inspectionInterval: 'Annual inspection by ASL (Local Health Authority)',
-    keyDocuments: ['D.M. 279/1988 Medical Equipment', 'EU Directive 92/29/EEC Italian Implementation', 'ASL Inspection Procedures'],
+    keyDocuments: [
+      { name: 'D.M. 279/1988 Reference', url: 'https://olympus.uniurb.it/index.php?Itemid=137&catid=5&id=21305%3A279_88&option=com_content&view=article' },
+      { name: 'EU Directive 92/29/EEC', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01992L0029-20190726' },
+    ],
     authorityUrl: 'https://www.guardiacostiera.gov.it',
     details: 'Italy implements EU requirements through national decree DM 279/1988. Medical stores must be inspected by the local ASL health authority. Italian-language labeling may be required for certain medications.',
   },
@@ -231,12 +278,16 @@ export const flagStates: FlagState[] = [
     flag: '\u{1F1E9}\u{1F1EA}',
     lat: 52.5,
     lng: 13.4,
-    regulation: 'Verordnung uber die Krankenfursorge auf Kauffahrteischiffen (KrFV)',
+    regulation: 'MariMedV (Maritime Medical Regulation)',
     authority: 'BG Verkehr (German Maritime Authority)',
-    standardKey: 'BGV-KrFV',
+    standardKey: 'BGV-MariMedV',
     chestCategories: ['Category A - Unlimited trade', 'Category B - European waters', 'Category C - Coastal/inland'],
     inspectionInterval: 'Annual inspection by approved pharmacy',
-    keyDocuments: ['KrFV Medical Stores Regulation', 'BG Verkehr Approved Pharmacy List', 'German Medical Equipment Standards'],
+    keyDocuments: [
+      { name: 'MariMedV Full Text (EN)', url: 'https://www.gesetze-im-internet.de/englisch_marimedv/englisch_marimedv.html' },
+      { name: 'Deutsche Flagge Maritime Medicine', url: 'https://www.deutsche-flagge.de/en/maritime-medicine' },
+      { name: 'Equipment & Spaces Guidance', url: 'https://www.deutsche-flagge.de/en/maritime-medicine/equipment-spaces' },
+    ],
     authorityUrl: 'https://www.bg-verkehr.de',
     details: 'Germany has strict medical equipment requirements enforced by BG Verkehr. Annual inspections must be performed by a BG Verkehr-approved pharmacy. German-language medical guides required for German crew.',
   },
@@ -251,7 +302,9 @@ export const flagStates: FlagState[] = [
     standardKey: 'MSA-CN',
     chestCategories: ['Category I - International voyages', 'Category II - Domestic long voyages', 'Category III - Coastal/river'],
     inspectionInterval: 'Annual inspection during vessel survey',
-    keyDocuments: ['MSA Medical Equipment Rules', 'GB/T 16857 Medical Equipment Standards', 'CCS Survey Guidelines'],
+    keyDocuments: [
+      { name: 'ILO MLC 2006 (applies to China)', url: 'https://www.ilo.org/media/267866/download' },
+    ],
     authorityUrl: 'https://en.msa.gov.cn',
     details: 'China MSA requires medical stores based on vessel type and trading area. Inspections are typically conducted during annual vessel surveys by CCS (China Classification Society). Chinese-language medication labels required.',
   },
@@ -266,7 +319,10 @@ export const flagStates: FlagState[] = [
     standardKey: 'JCG-MA81',
     chestCategories: ['Ocean-going vessels', 'Coastal vessels', 'Fishing vessels'],
     inspectionInterval: 'Annual inspection by designated physician',
-    keyDocuments: ['Mariners Act Medical Requirements', 'Ship Safety Act Medical Equipment', 'JCG Medical Stores Guidelines'],
+    keyDocuments: [
+      { name: 'Mariners Act (EN Translation)', url: 'https://www.japaneselawtranslation.go.jp/en/laws/view/4166/en' },
+      { name: 'Seafarma: Japan Regulation Overview', url: 'https://seafarma.nl/regulations/japanese-ship-medical-chest-regulation/' },
+    ],
     authorityUrl: 'https://www.mlit.go.jp',
     details: 'Japan requires medical equipment per the Mariners Act and Ship Safety Act. Medical stores must be inspected by designated physicians. Japanese requirements include traditional medicines in addition to Western pharmaceuticals.',
   },
@@ -281,7 +337,10 @@ export const flagStates: FlagState[] = [
     standardKey: 'DGS-01-2014',
     chestCategories: ['Category A - Foreign-going vessels', 'Category B - Home trade vessels', 'Category C - Coastal vessels'],
     inspectionInterval: 'Annual inspection by DGS-approved medical provider',
-    keyDocuments: ['DGS Order 01/2014 Medical Stores', 'MS Medical Examination Rules 2000', 'DGS Approved Medical Suppliers'],
+    keyDocuments: [
+      { name: 'DGS Orders Portal', url: 'https://www.dgshipping.gov.in/Content/DGSOrders.aspx' },
+      { name: 'DGS Order 02/2017 Medical Stores Inspection', url: 'https://www.irclass.org/technical-circulars/dgs-order-no-02-of-2017-regarding-inspection-of-medicines-medical-stores-and-appliances-and-issuance-of-certificate/' },
+    ],
     authorityUrl: 'https://www.dgshipping.gov.in',
     details: 'India DGS requires medical stores per vessel category. The DGS maintains a list of approved medical suppliers for Indian flag vessels. Additional anti-malarial medications required for vessels trading in tropical waters.',
   },
@@ -296,7 +355,10 @@ export const flagStates: FlagState[] = [
     standardKey: 'GDMA-TR',
     chestCategories: ['Category A - International voyages', 'Category B - Coastal trade', 'Category C - Harbor/inland'],
     inspectionInterval: 'Annual inspection by approved pharmacist',
-    keyDocuments: ['GDMA Medical Stores Circular', 'Turkish Maritime Health Regulations', 'Approved Pharmacy List'],
+    keyDocuments: [
+      { name: 'Gemiadami Saglik Islemleri', url: 'https://www.hssgm.gov.tr/GemiadamiSaglikIslemleri' },
+      { name: 'ILO MLC 2006 (applies to Turkey)', url: 'https://www.ilo.org/media/267866/download' },
+    ],
     authorityUrl: 'https://www.uab.gov.tr',
     details: 'Turkey requires medical stores based on vessel trading area and crew size. The General Directorate of Maritime Affairs oversees compliance. Turkish-language medical guides are required. Additional requirements for vessels carrying dangerous cargo.',
   },
@@ -311,7 +373,10 @@ export const flagStates: FlagState[] = [
     standardKey: 'FTA-UAE-2019',
     chestCategories: ['Category A - International voyages', 'Category B - Regional trade', 'Category C - Coastal/harbor'],
     inspectionInterval: 'Annual inspection by FTA-approved provider',
-    keyDocuments: ['FTA Medical Stores Circular 2019', 'UAE Maritime Medical Requirements', 'FTA Approved Service Providers'],
+    keyDocuments: [
+      { name: 'ILO MLC 2006 (applies to UAE)', url: 'https://www.ilo.org/media/267866/download' },
+      { name: 'FTA Open Data Portal', url: 'https://opendata.fcsc.gov.ae/federal-transport-authority-land-maritime' },
+    ],
     authorityUrl: 'https://www.fta.gov.ae',
     details: 'The UAE FTA requires medical stores based on voyage type. As a growing flag state, the UAE has modernized its maritime medical requirements. Medical stores must account for extreme heat conditions in the Gulf region.',
   },
