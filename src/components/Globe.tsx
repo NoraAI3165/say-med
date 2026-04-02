@@ -54,20 +54,21 @@ function Landmasses({ radius, geoData }: { radius: number; geoData: GeoData | nu
     return result;
   }, [geoData, radius]);
 
+  const geometries = useMemo(() => {
+    return lines.map((points) => {
+      const geo = new THREE.BufferGeometry();
+      const positions = new Float32Array(points.flatMap((p) => [p.x, p.y, p.z]));
+      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      return geo;
+    });
+  }, [lines]);
+
+  const material = useMemo(() => new THREE.LineBasicMaterial({ color: '#4a9a6a', transparent: true, opacity: 0.6 }), []);
+
   return (
     <group>
-      {lines.map((points, i) => (
-        <line key={i}>
-          <bufferGeometry>
-            <bufferAttribute
-              attach="attributes-position"
-              array={new Float32Array(points.flatMap((p) => [p.x, p.y, p.z]))}
-              count={points.length}
-              itemSize={3}
-            />
-          </bufferGeometry>
-          <lineBasicMaterial color="#4a9a6a" transparent opacity={0.6} />
-        </line>
+      {geometries.map((geo, i) => (
+        <primitive key={i} object={new THREE.Line(geo, material)} />
       ))}
     </group>
   );
