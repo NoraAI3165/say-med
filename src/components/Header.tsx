@@ -2,34 +2,26 @@
 
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { usePathname as useNextPathname, useRouter as useNextRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Link } from '@/navigation';
 import Image from 'next/image';
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import clsx from 'clsx';
 
-const localeNames: Record<string, string> = {
-  en: 'English',
-  tr: 'Turkce',
-  nl: 'Nederlands',
-};
-
-const localeFlagCodes: Record<string, string> = {
-  en: 'gb',
-  tr: 'tr',
-  nl: 'nl',
-};
+const locales = [
+  { code: 'en', label: 'EN', flag: 'gb' },
+  { code: 'tr', label: 'TR', flag: 'tr' },
+  { code: 'nl', label: 'NL', flag: 'nl' },
+];
 
 export default function Header() {
   const t = useTranslations('nav');
   const locale = useLocale();
-  const nextRouter = useNextRouter();
-  const nextPathname = useNextPathname();
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
 
-  // Get path without locale prefix for nav link matching
-  const pathWithoutLocale = nextPathname.replace(new RegExp(`^/${locale}(?=/|$)`), '') || '/';
+  // Path without locale for matching and switching
+  const pathWithoutLocale = pathname.replace(new RegExp(`^/${locale}(?=/|$)`), '') || '/';
 
   const navLinks = [
     { href: '/' as const, label: t('home') },
@@ -40,24 +32,21 @@ export default function Header() {
     { href: '/contact' as const, label: t('contact') },
   ];
 
-  function switchLocale(newLocale: string) {
-    const newPath = `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
-    window.location.href = newPath;
+  // Build locale switch URL
+  function localeUrl(loc: string) {
+    return `/${loc}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
   }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-gold/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24 lg:h-28">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/logos/logo-white.svg"
+          {/* Logo - use wide format */}
+          <Link href="/" className="flex items-center shrink-0">
+            <img
+              src="/logos/logo-wide-white.svg"
               alt="Say-Med"
-              width={240}
-              height={80}
-              className="h-16 lg:h-20 w-auto"
-              priority
+              className="h-14 sm:h-16 lg:h-20 w-auto"
             />
           </Link>
 
@@ -79,37 +68,25 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right side: Language + CTA */}
-          <div className="hidden lg:flex items-center gap-4">
-            {/* Language Switcher */}
-            <div className="relative">
-              <button
-                onClick={() => setLangOpen(!langOpen)}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-all text-sm"
-              >
-                <img src={`/flags/${localeFlagCodes[locale]}.svg`} alt="" className="w-5 h-3.5 rounded-sm object-cover" />
-                <span>{localeNames[locale]}</span>
-                <ChevronDown className={clsx('w-3 h-3 transition-transform', langOpen && 'rotate-180')} />
-              </button>
-              {langOpen && (
-                <div className="absolute right-0 mt-2 w-44 bg-navy-light border border-gold/20 rounded-xl shadow-2xl overflow-hidden z-50">
-                  {(['en', 'tr', 'nl'] as const).map((loc) => (
-                    <button
-                      key={loc}
-                      onClick={() => switchLocale(loc)}
-                      className={clsx(
-                        'w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors',
-                        loc === locale
-                          ? 'text-gold bg-gold/10'
-                          : 'text-white/70 hover:text-white hover:bg-white/5'
-                      )}
-                    >
-                      <img src={`/flags/${localeFlagCodes[loc]}.svg`} alt="" className="w-6 h-4 rounded-sm object-cover" />
-                      {localeNames[loc]}
-                    </button>
-                  ))}
-                </div>
-              )}
+          {/* Right side: Language flags + CTA */}
+          <div className="hidden lg:flex items-center gap-3">
+            {/* Language flags - always visible, no dropdown */}
+            <div className="flex items-center gap-1 bg-white/5 rounded-lg p-1">
+              {locales.map((loc) => (
+                <a
+                  key={loc.code}
+                  href={localeUrl(loc.code)}
+                  className={clsx(
+                    'flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-all',
+                    loc.code === locale
+                      ? 'bg-gold/20 text-gold'
+                      : 'text-white/50 hover:text-white hover:bg-white/10'
+                  )}
+                >
+                  <img src={`/flags/${loc.flag}.svg`} alt="" className="w-5 h-3.5 rounded-sm" />
+                  {loc.label}
+                </a>
+              ))}
             </div>
 
             {/* CTA */}
@@ -150,19 +127,20 @@ export default function Header() {
                 </Link>
               ))}
             </nav>
+            {/* Mobile language flags */}
             <div className="flex items-center gap-2 mt-4 px-4">
-              {(['en', 'tr', 'nl'] as const).map((loc) => (
-                <button
-                  key={loc}
-                  onClick={() => switchLocale(loc)}
+              {locales.map((loc) => (
+                <a
+                  key={loc.code}
+                  href={localeUrl(loc.code)}
                   className={clsx(
                     'flex items-center gap-2 px-3 py-2 rounded-lg text-sm',
-                    loc === locale ? 'text-gold bg-gold/10' : 'text-white/60 hover:text-white'
+                    loc.code === locale ? 'text-gold bg-gold/10' : 'text-white/60 hover:text-white'
                   )}
                 >
-                  <img src={`/flags/${localeFlagCodes[loc]}.svg`} alt="" className="w-5 h-3.5 rounded-sm object-cover" />
-                  {loc.toUpperCase()}
-                </button>
+                  <img src={`/flags/${loc.flag}.svg`} alt="" className="w-5 h-3.5 rounded-sm" />
+                  {loc.label}
+                </a>
               ))}
             </div>
             <div className="mt-4 px-4">
