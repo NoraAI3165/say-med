@@ -1,7 +1,8 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/navigation';
+import Image from 'next/image';
 import ScrollSection from '@/components/ScrollSection';
 import { ArrowRight, Package, Pill, Stethoscope, Wind, Heart, ShieldPlus } from 'lucide-react';
 
@@ -16,12 +17,18 @@ const categories = [
 
 export default function ProductsPage() {
   const t = useTranslations('products');
-  const locale = useLocale();
 
   return (
     <div className="pt-20">
-      <section className="bg-navy py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative bg-navy py-20 lg:py-28 overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1920&q=80"
+          alt=""
+          fill
+          className="object-cover opacity-20"
+          priority
+        />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">{t('title')}</h1>
           <p className="text-xl text-white/50 max-w-2xl mx-auto">{t('subtitle')}</p>
         </div>
@@ -46,7 +53,7 @@ export default function ProductsPage() {
                   ))}
                 </ul>
                 <Link
-                  href={`/${locale}/contact`}
+                  href="/contact"
                   className="inline-flex items-center gap-2 text-gold text-sm font-semibold hover:gap-3 transition-all"
                 >
                   {t('requestQuote')}
@@ -63,7 +70,7 @@ export default function ProductsPage() {
           <h2 className="text-3xl font-bold text-navy mb-4">{t('customTitle')}</h2>
           <p className="text-gray-500 mb-8">{t('customDesc')}</p>
           <Link
-            href={`/${locale}/contact`}
+            href="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-navy font-semibold rounded-xl hover:bg-gold-light transition-all"
           >
             {t('contactUs')}

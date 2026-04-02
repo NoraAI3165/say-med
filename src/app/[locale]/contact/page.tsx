@@ -1,13 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import ScrollSection from '@/components/ScrollSection';
 import { Send, Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
 
 export default function ContactPage() {
   const t = useTranslations('contact');
-  const locale = useLocale();
   const [form, setForm] = useState({ name: '', email: '', company: '', subject: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 

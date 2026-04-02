@@ -1,13 +1,13 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/navigation';
+import Image from 'next/image';
 import ScrollSection from '@/components/ScrollSection';
-import { ArrowRight, Award, Users, Globe, Shield, Anchor, Target, Eye, Heart } from 'lucide-react';
+import { ArrowRight, Award, Users, Globe, Shield, Target, Eye } from 'lucide-react';
 
 export default function AboutPage() {
   const t = useTranslations('about');
-  const locale = useLocale();
 
   const values = [
     { icon: Shield, titleKey: 'value1Title', descKey: 'value1Desc' },
@@ -39,8 +39,14 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[4/3] rounded-3xl bg-cream flex items-center justify-center">
-                <Anchor className="w-32 h-32 text-gold/20" strokeWidth={1} />
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden relative">
+                <Image
+                  src="https://images.unsplash.com/photo-1494412574643-ff11b0a5eb19?w=800&q=80"
+                  alt={t('storyTitle')}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gold/10 rounded-2xl -z-10" />
             </div>
@@ -92,7 +98,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-white mb-4">{t('ctaTitle')}</h2>
           <p className="text-white/50 mb-8">{t('ctaDesc')}</p>
           <Link
-            href={`/${locale}/contact`}
+            href="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-navy font-semibold rounded-xl hover:bg-gold-light transition-all"
           >
             {t('ctaButton')}

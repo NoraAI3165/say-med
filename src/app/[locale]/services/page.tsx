@@ -1,14 +1,26 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/navigation';
+import Image from 'next/image';
 import { services } from '@/lib/services';
 import ScrollSection from '@/components/ScrollSection';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 
+const serviceImages: Record<string, string> = {
+  'medical-chests': 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80',
+  'recertification': 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80',
+  'pharmaceuticals': 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&q=80',
+  'medical-equipment': 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&q=80',
+  'oxygen-services': 'https://images.unsplash.com/photo-1530497610245-b42a4f259515?w=600&q=80',
+  'telemedical': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80',
+  'drug-alcohol': 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&q=80',
+  'mental-health': 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=80',
+  'reflagging': 'https://images.unsplash.com/photo-1559070169-a3077159ee16?w=600&q=80',
+};
+
 export default function ServicesPage() {
   const t = useTranslations('services');
-  const locale = useLocale();
 
   return (
     <div className="pt-20">
@@ -30,10 +42,16 @@ export default function ServicesPage() {
                 id={service.id}
                 className={`flex flex-col lg:flex-row gap-12 items-center ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
               >
-                {/* Icon/Visual */}
+                {/* Image */}
                 <div className="w-full lg:w-2/5">
-                  <div className="aspect-square max-w-sm mx-auto rounded-3xl bg-cream flex items-center justify-center">
-                    <service.icon className="w-24 h-24 text-gold/40" strokeWidth={1} />
+                  <div className="aspect-square max-w-sm mx-auto rounded-3xl overflow-hidden relative">
+                    <Image
+                      src={serviceImages[service.id]}
+                      alt={t(service.titleKey)}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                    />
                   </div>
                 </div>
 
@@ -59,7 +77,7 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                   <Link
-                    href={`/${locale}/contact`}
+                    href="/contact"
                     className="inline-flex items-center gap-2 text-gold font-semibold hover:gap-3 transition-all"
                   >
                     {t('inquire')}
@@ -78,7 +96,7 @@ export default function ServicesPage() {
           <h2 className="text-3xl font-bold text-white mb-4">{t('ctaTitle')}</h2>
           <p className="text-white/50 mb-8">{t('ctaDesc')}</p>
           <Link
-            href={`/${locale}/contact`}
+            href="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-navy font-semibold rounded-xl hover:bg-gold-light transition-all"
           >
             {t('ctaButton')}

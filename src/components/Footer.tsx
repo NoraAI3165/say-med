@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
@@ -11,7 +11,6 @@ export default function Footer() {
 
   return (
     <footer className="bg-navy-dark text-white/70">
-      {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
@@ -20,9 +19,9 @@ export default function Footer() {
               <Image
                 src="/logos/logo-white.svg"
                 alt="Say-Med"
-                width={120}
-                height={40}
-                className="h-10 w-auto"
+                width={160}
+                height={50}
+                className="h-12 w-auto"
               />
             </div>
             <p className="text-sm leading-relaxed mb-6">
@@ -32,16 +31,16 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">
+            <h3 className="text-white font-semibold text-sm tracking-wider mb-6">
               {t('quickLinks')}
             </h3>
             <ul className="space-y-3">
               {[
-                { href: `/${locale}/services`, label: t('services') },
-                { href: `/${locale}/regulations`, label: t('regulations') },
-                { href: `/${locale}/products`, label: t('products') },
-                { href: `/${locale}/about`, label: t('about') },
-                { href: `/${locale}/contact`, label: t('contact') },
+                { href: '/services' as const, label: t('services') },
+                { href: '/regulations' as const, label: t('regulations') },
+                { href: '/products' as const, label: t('products') },
+                { href: '/about' as const, label: t('about') },
+                { href: '/contact' as const, label: t('contact') },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm hover:text-gold transition-colors">
@@ -54,7 +53,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">
+            <h3 className="text-white font-semibold text-sm tracking-wider mb-6">
               {t('servicesTitle')}
             </h3>
             <ul className="space-y-3">
@@ -70,7 +69,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">
+            <h3 className="text-white font-semibold text-sm tracking-wider mb-6">
               {t('contactTitle')}
             </h3>
             <ul className="space-y-4">
@@ -105,10 +104,10 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Say-Med. {t('rights')}
           </p>
           <div className="flex items-center gap-6 text-xs text-white/40">
-            <Link href={`/${locale}/privacy`} className="hover:text-white/60 transition-colors">
+            <Link href="/" className="hover:text-white/60 transition-colors">
               {t('privacy')}
             </Link>
-            <Link href={`/${locale}/terms`} className="hover:text-white/60 transition-colors">
+            <Link href="/" className="hover:text-white/60 transition-colors">
               {t('terms')}
             </Link>
           </div>

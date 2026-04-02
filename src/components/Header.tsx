@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { Link, useRouter, usePathname } from '@/navigation';
 import Image from 'next/image';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import clsx from 'clsx';
@@ -29,32 +28,31 @@ export default function Header() {
   const [langOpen, setLangOpen] = useState(false);
 
   const navLinks = [
-    { href: `/${locale}`, label: t('home') },
-    { href: `/${locale}/services`, label: t('services') },
-    { href: `/${locale}/regulations`, label: t('regulations') },
-    { href: `/${locale}/products`, label: t('products') },
-    { href: `/${locale}/about`, label: t('about') },
-    { href: `/${locale}/contact`, label: t('contact') },
+    { href: '/' as const, label: t('home') },
+    { href: '/services' as const, label: t('services') },
+    { href: '/regulations' as const, label: t('regulations') },
+    { href: '/products' as const, label: t('products') },
+    { href: '/about' as const, label: t('about') },
+    { href: '/contact' as const, label: t('contact') },
   ];
 
-  function switchLocale(newLocale: string) {
-    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
-    router.push(newPath);
+  function switchLocale(newLocale: 'en' | 'tr' | 'nl') {
+    router.replace(pathname, { locale: newLocale });
     setLangOpen(false);
   }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-gold/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Image
               src="/logos/logo-white.svg"
               alt="Say-Med"
-              width={120}
-              height={40}
-              className="h-10 w-auto"
+              width={180}
+              height={60}
+              className="h-14 lg:h-16 w-auto"
               priority
             />
           </Link>
@@ -90,7 +88,7 @@ export default function Header() {
                 <ChevronDown className={clsx('w-3 h-3 transition-transform', langOpen && 'rotate-180')} />
               </button>
               {langOpen && (
-                <div className="absolute right-0 mt-2 w-44 bg-navy-light border border-gold/20 rounded-xl shadow-2xl overflow-hidden">
+                <div className="absolute right-0 mt-2 w-44 bg-navy-light border border-gold/20 rounded-xl shadow-2xl overflow-hidden z-50">
                   {(['en', 'tr', 'nl'] as const).map((loc) => (
                     <button
                       key={loc}
@@ -112,7 +110,7 @@ export default function Header() {
 
             {/* CTA */}
             <Link
-              href={`/${locale}/contact`}
+              href="/contact"
               className="px-5 py-2.5 bg-gold text-navy font-semibold text-sm rounded-lg hover:bg-gold-light transition-colors"
             >
               {t('getQuote')}
@@ -164,7 +162,7 @@ export default function Header() {
             </div>
             <div className="mt-4 px-4">
               <Link
-                href={`/${locale}/contact`}
+                href="/contact"
                 onClick={() => setMobileOpen(false)}
                 className="block text-center px-5 py-3 bg-gold text-navy font-semibold text-sm rounded-lg"
               >
