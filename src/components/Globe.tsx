@@ -6,6 +6,17 @@ import { OrbitControls, Html, Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 import { flagStates, type FlagState } from '@/lib/regulations';
 
+interface GeoFeature {
+  geometry: {
+    type: string;
+    coordinates: number[][][] | number[][][][];
+  };
+}
+
+interface GeoData {
+  features: GeoFeature[];
+}
+
 // Convert lat/lng to 3D position on sphere
 function latLngToVector3(lat: number, lng: number, radius: number): THREE.Vector3 {
   const phi = (90 - lat) * (Math.PI / 180);
@@ -22,20 +33,20 @@ function geoToPoints(coords: number[][], radius: number): THREE.Vector3[] {
 }
 
 // Globe landmass component using GeoJSON
-function Landmasses({ radius, geoData }: { radius: number; geoData: GeoJSON.FeatureCollection | null }) {
+function Landmasses({ radius, geoData }: { radius: number; geoData: GeoData | null }) {
   const lines = useMemo(() => {
     if (!geoData) return [];
     const result: THREE.Vector3[][] = [];
 
-    geoData.features.forEach((feature) => {
+    geoData.features.forEach((feature: GeoFeature) => {
       if (feature.geometry.type === 'Polygon') {
-        feature.geometry.coordinates.forEach((ring) => {
-          result.push(geoToPoints(ring as number[][], radius * 1.001));
+        (feature.geometry.coordinates as number[][][]).forEach((ring) => {
+          result.push(geoToPoints(ring, radius * 1.001));
         });
       } else if (feature.geometry.type === 'MultiPolygon') {
-        feature.geometry.coordinates.forEach((polygon) => {
+        (feature.geometry.coordinates as number[][][][]).forEach((polygon) => {
           polygon.forEach((ring) => {
-            result.push(geoToPoints(ring as number[][], radius * 1.001));
+            result.push(geoToPoints(ring, radius * 1.001));
           });
         });
       }
@@ -127,7 +138,7 @@ function GlobeMesh({
 }: {
   onSelect: (c: FlagState | null) => void;
   selected: FlagState | null;
-  geoData: GeoJSON.FeatureCollection | null;
+  geoData: GeoData | null;
 }) {
   const globeRadius = 2;
 
@@ -173,7 +184,7 @@ export default function GlobeComponent({
   onCountrySelect: (c: FlagState | null) => void;
   selectedCountry: FlagState | null;
 }) {
-  const [geoData, setGeoData] = useState<GeoJSON.FeatureCollection | null>(null);
+  const [geoData, setGeoData] = useState<GeoData | null>(null);
 
   useEffect(() => {
     fetch('/world.geojson')
