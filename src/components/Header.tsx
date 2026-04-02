@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Link, useRouter, usePathname } from '@/navigation';
+import { usePathname as useNextPathname, useRouter as useNextRouter } from 'next/navigation';
+import { Link } from '@/navigation';
 import Image from 'next/image';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import clsx from 'clsx';
@@ -22,10 +23,13 @@ const localeFlags: Record<string, string> = {
 export default function Header() {
   const t = useTranslations('nav');
   const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
+  const nextRouter = useNextRouter();
+  const nextPathname = useNextPathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+
+  // Get path without locale prefix for nav link matching
+  const pathWithoutLocale = nextPathname.replace(new RegExp(`^/${locale}(?=/|$)`), '') || '/';
 
   const navLinks = [
     { href: '/' as const, label: t('home') },
@@ -36,8 +40,10 @@ export default function Header() {
     { href: '/contact' as const, label: t('contact') },
   ];
 
-  function switchLocale(newLocale: 'en' | 'tr' | 'nl') {
-    router.replace(pathname, { locale: newLocale });
+  function switchLocale(newLocale: string) {
+    // Build new path: /{newLocale} + path without current locale
+    const newPath = `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
+    nextRouter.push(newPath);
     setLangOpen(false);
   }
 
@@ -65,7 +71,7 @@ export default function Header() {
                 href={link.href}
                 className={clsx(
                   'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
-                  pathname === link.href
+                  pathWithoutLocale === link.href
                     ? 'text-gold bg-gold/10'
                     : 'text-white/70 hover:text-white hover:bg-white/5'
                 )}
@@ -137,7 +143,7 @@ export default function Header() {
                   onClick={() => setMobileOpen(false)}
                   className={clsx(
                     'px-4 py-3 rounded-lg text-sm font-medium',
-                    pathname === link.href
+                    pathWithoutLocale === link.href
                       ? 'text-gold bg-gold/10'
                       : 'text-white/70 hover:text-white hover:bg-white/5'
                   )}
