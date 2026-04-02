@@ -6,8 +6,9 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
 import Image from 'next/image';
 import { flagStates, type FlagState } from '@/lib/regulations';
+import { specialRegulations, regulationCategories } from '@/lib/regulation-categories';
 import ScrollSection from '@/components/ScrollSection';
-import { Search, ArrowRight, Globe, FileText, Shield, Clock, ExternalLink, CheckCircle, Download } from 'lucide-react';
+import { Search, ArrowRight, Globe, FileText, Shield, Clock, ExternalLink, CheckCircle, Download, Anchor, Plane, AlertTriangle, LifeBuoy } from 'lucide-react';
 
 const GlobeComponent = dynamic(() => import('@/components/Globe'), { ssr: false });
 
@@ -260,6 +261,69 @@ export default function RegulationsPage() {
               {t('noResults')}
             </div>
           )}
+        </div>
+      </ScrollSection>
+
+      {/* Special Regulations: Offshore, Aviation, Dangerous Goods, Safety */}
+      <ScrollSection className="py-16 lg:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">{t('specialTitle')}</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">{t('specialDesc')}</p>
+          </div>
+
+          <div className="space-y-6">
+            {specialRegulations.map((reg) => {
+              const iconMap: Record<string, React.ReactNode> = {
+                offshore: <Anchor className="w-6 h-6 text-gold" />,
+                aviation: <Plane className="w-6 h-6 text-gold" />,
+                'dangerous-goods': <AlertTriangle className="w-6 h-6 text-gold" />,
+                safety: <LifeBuoy className="w-6 h-6 text-gold" />,
+              };
+              return (
+                <div key={reg.id} className="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="p-6 lg:p-8">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
+                        {iconMap[reg.category]}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-1">
+                          <h3 className="text-xl font-bold text-navy">{reg.name}</h3>
+                          <span className="px-2 py-0.5 bg-navy/5 rounded text-xs font-medium text-navy/60">{reg.code}</span>
+                        </div>
+                        <p className="text-sm text-gray-400">{reg.applicableTo}</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-500 mb-4">{reg.description}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+                      {reg.keyRequirements.slice(0, 4).map((req, i) => (
+                        <div key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                          <CheckCircle className="w-4 h-4 text-gold shrink-0" />
+                          {req}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {reg.documents.map((doc, i) => (
+                        <a
+                          key={i}
+                          href={doc.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-navy/5 hover:bg-gold/10 rounded-lg text-sm text-navy/70 hover:text-gold transition-colors"
+                        >
+                          <FileText className="w-3.5 h-3.5" />
+                          {doc.name}
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </ScrollSection>
 

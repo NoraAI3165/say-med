@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { Link } from '@/navigation';
-import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -20,7 +19,6 @@ export default function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Path without locale for matching and switching
   const pathWithoutLocale = pathname.replace(new RegExp(`^/${locale}(?=/|$)`), '') || '/';
 
   const navLinks = [
@@ -33,16 +31,18 @@ export default function Header() {
     { href: '/contact' as const, label: t('contact') },
   ];
 
-  // Build locale switch URL
   function localeUrl(loc: string) {
     return `/${loc}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
   }
+
+  const currentFlag = locales.find((l) => l.code === locale) || locales[0];
+  const otherLocales = locales.filter((l) => l.code !== locale);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-gold/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24 lg:h-28">
-          {/* Logo - use wide format */}
+          {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
             <img
               src="/logos/logo-wide-white.svg"
@@ -69,28 +69,34 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right side: Language flags + CTA */}
-          <div className="hidden lg:flex items-center gap-3">
-            {/* Language flags - always visible, no dropdown */}
-            <div className="flex items-center gap-1 bg-white/5 rounded-lg p-1">
-              {locales.map((loc) => (
-                <a
-                  key={loc.code}
-                  href={localeUrl(loc.code)}
-                  className={clsx(
-                    'flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-all',
-                    loc.code === locale
-                      ? 'bg-gold/20 text-gold'
-                      : 'text-white/50 hover:text-white hover:bg-white/10'
-                  )}
-                >
-                  <img src={`/flags/${loc.flag}.svg`} alt="" className="w-5 h-3.5 rounded-sm" />
-                  {loc.label}
-                </a>
-              ))}
-            </div>
+          {/* Right: Flag dropdown + CTA */}
+          <div className="hidden lg:flex items-center gap-4">
+            {/* Flag-only dropdown using <details> - pure HTML, no JS */}
+            <details className="relative group">
+              <summary className="flex items-center cursor-pointer list-none px-2 py-1.5 rounded-lg hover:bg-white/10 transition-colors">
+                <img
+                  src={`/flags/${currentFlag.flag}.svg`}
+                  alt={currentFlag.label}
+                  className="w-8 h-6 rounded shadow-sm"
+                />
+                <svg className="w-3 h-3 ml-1.5 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="absolute right-0 mt-2 bg-navy-light border border-gold/20 rounded-xl shadow-2xl overflow-hidden z-50 min-w-[120px]">
+                {otherLocales.map((loc) => (
+                  <a
+                    key={loc.code}
+                    href={localeUrl(loc.code)}
+                    className="flex items-center gap-3 px-4 py-3 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+                  >
+                    <img src={`/flags/${loc.flag}.svg`} alt="" className="w-7 h-5 rounded shadow-sm" />
+                    <span className="font-medium">{loc.label}</span>
+                  </a>
+                ))}
+              </div>
+            </details>
 
-            {/* CTA */}
             <Link
               href="/contact"
               className="px-5 py-2.5 bg-gold text-navy font-semibold text-sm rounded-lg hover:bg-gold-light transition-colors"
@@ -128,19 +134,21 @@ export default function Header() {
                 </Link>
               ))}
             </nav>
-            {/* Mobile language flags */}
-            <div className="flex items-center gap-2 mt-4 px-4">
+            {/* Mobile language - flag buttons */}
+            <div className="flex items-center gap-3 mt-4 px-4">
               {locales.map((loc) => (
                 <a
                   key={loc.code}
                   href={localeUrl(loc.code)}
                   className={clsx(
-                    'flex items-center gap-2 px-3 py-2 rounded-lg text-sm',
-                    loc.code === locale ? 'text-gold bg-gold/10' : 'text-white/60 hover:text-white'
+                    'flex items-center gap-2 px-3 py-2 rounded-lg text-sm border transition-colors',
+                    loc.code === locale
+                      ? 'border-gold/40 bg-gold/10'
+                      : 'border-white/10 hover:border-white/30'
                   )}
                 >
-                  <img src={`/flags/${loc.flag}.svg`} alt="" className="w-5 h-3.5 rounded-sm" />
-                  {loc.label}
+                  <img src={`/flags/${loc.flag}.svg`} alt="" className="w-6 h-4 rounded" />
+                  <span className={loc.code === locale ? 'text-gold font-medium' : 'text-white/60'}>{loc.label}</span>
                 </a>
               ))}
             </div>
