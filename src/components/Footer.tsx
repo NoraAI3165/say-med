@@ -2,7 +2,8 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Anchor } from 'lucide-react';
+import Image from 'next/image';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -15,13 +16,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
-                <Anchor className="w-5 h-5 text-gold" />
-              </div>
-              <span className="text-white font-bold text-xl">
-                Say<span className="text-gold">-Med</span>
-              </span>
+            <div className="mb-6">
+              <Image
+                src="/logos/logo-white.svg"
+                alt="Say-Med"
+                width={120}
+                height={40}
+                className="h-10 w-auto"
+              />
             </div>
             <p className="text-sm leading-relaxed mb-6">
               {t('description')}

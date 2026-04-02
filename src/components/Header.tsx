@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -47,13 +48,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center">
-              <span className="text-gold font-bold text-lg">S</span>
-            </div>
-            <span className="text-white font-bold text-xl tracking-tight">
-              Say<span className="text-gold">-Med</span>
-            </span>
+          <Link href={`/${locale}`} className="flex items-center">
+            <Image
+              src="/logos/logo-white.svg"
+              alt="Say-Med"
+              width={120}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
