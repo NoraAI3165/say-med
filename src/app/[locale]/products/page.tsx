@@ -22,7 +22,7 @@ export default function ProductsPage() {
     <div className="pt-20">
       <section className="relative bg-navy py-20 lg:py-28 overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1920&q=80"
+          src="/images/medical-supplies.jpg"
           alt=""
           fill
           className="object-cover opacity-20"

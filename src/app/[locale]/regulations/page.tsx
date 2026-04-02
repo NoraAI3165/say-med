@@ -1,13 +1,15 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
 import Image from 'next/image';
 import { flagStates, type FlagState } from '@/lib/regulations';
-import WorldMap from '@/components/WorldMap';
 import ScrollSection from '@/components/ScrollSection';
-import { Search, ArrowRight, Globe, FileText, Shield, Clock, ExternalLink, CheckCircle } from 'lucide-react';
+import { Search, ArrowRight, Globe, FileText, Shield, Clock, ExternalLink, CheckCircle, Download } from 'lucide-react';
+
+const GlobeComponent = dynamic(() => import('@/components/Globe'), { ssr: false });
 
 export default function RegulationsPage() {
   const t = useTranslations('regulations');
@@ -46,36 +48,35 @@ export default function RegulationsPage() {
       {/* Globe Section */}
       <ScrollSection className="py-16 lg:py-24 bg-navy-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Full-width map */}
-          <div className="mb-12">
-            <WorldMap onCountrySelect={setSelected} selectedCountry={selected} />
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Country grid - left side when selected */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {flagStates.map((fs) => (
-                <button
-                  key={fs.code}
-                  onClick={() => setSelected(fs)}
-                  className={`flex items-center gap-2 p-3 rounded-lg text-left transition-all text-sm ${
-                    selected?.code === fs.code
-                      ? 'bg-gold/20 border border-gold/40'
-                      : 'bg-navy/50 border border-white/5 hover:border-white/20'
-                  }`}
-                >
-                  <Image
-                    src={`https://flagcdn.com/w40/${fs.code.toLowerCase()}.png`}
-                    alt={fs.name}
-                    width={24}
-                    height={16}
-                    className="rounded-sm shrink-0"
-                  />
-                  <span className={selected?.code === fs.code ? 'text-gold font-medium' : 'text-white/70'}>
-                    {fs.name}
-                  </span>
-                </button>
-              ))}
+            {/* 3D Globe */}
+            <div>
+              <GlobeComponent onCountrySelect={setSelected} selectedCountry={selected} />
+              {/* Country quick-select grid below globe */}
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 mt-6">
+                {flagStates.map((fs) => (
+                  <button
+                    key={fs.code}
+                    onClick={() => setSelected(fs)}
+                    className={`flex items-center gap-2 p-2 rounded-lg text-left transition-all text-xs ${
+                      selected?.code === fs.code
+                        ? 'bg-gold/20 border border-gold/40'
+                        : 'bg-navy/50 border border-white/5 hover:border-white/20'
+                    }`}
+                  >
+                    <Image
+                      src={`/flags/${fs.code.toLowerCase()}.png`}
+                      alt={fs.name}
+                      width={20}
+                      height={14}
+                      className="rounded-sm shrink-0"
+                    />
+                    <span className={selected?.code === fs.code ? 'text-gold font-medium' : 'text-white/60'}>
+                      {fs.name}
+                    </span>
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="lg:sticky lg:top-28">
@@ -85,7 +86,7 @@ export default function RegulationsPage() {
                   <div className="p-6 bg-gold/5 border-b border-gold/10">
                     <div className="flex items-center gap-4">
                       <Image
-                        src={`https://flagcdn.com/w80/${selected.code.toLowerCase()}.png`}
+                        src={`/flags/${selected.code.toLowerCase()}.png`}
                         alt={selected.name}
                         width={60}
                         height={40}
@@ -145,15 +146,22 @@ export default function RegulationsPage() {
                       <p className="text-white/70 text-sm leading-relaxed">{selected.details}</p>
                     </div>
 
-                    {/* Key Documents */}
+                    {/* Key Documents - Clickable */}
                     <div>
                       <div className="text-white/40 text-xs font-medium mb-2">{t('keyDocuments')}</div>
-                      <div className="space-y-1.5">
+                      <div className="space-y-2">
                         {selected.keyDocuments.map((doc, i) => (
-                          <div key={i} className="flex items-center gap-2">
-                            <FileText className="w-3.5 h-3.5 text-gold/60 shrink-0" />
-                            <span className="text-white/70 text-sm">{doc}</span>
-                          </div>
+                          <a
+                            key={i}
+                            href={selected.authorityUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 p-2 rounded-lg bg-white/5 hover:bg-gold/10 border border-white/5 hover:border-gold/20 transition-all group"
+                          >
+                            <FileText className="w-4 h-4 text-gold/60 group-hover:text-gold shrink-0" />
+                            <span className="text-white/70 text-sm group-hover:text-white flex-1">{doc}</span>
+                            <Download className="w-3.5 h-3.5 text-white/30 group-hover:text-gold shrink-0" />
+                          </a>
                         ))}
                       </div>
                     </div>
@@ -225,7 +233,7 @@ export default function RegulationsPage() {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <Image
-                    src={`https://flagcdn.com/w40/${fs.code.toLowerCase()}.png`}
+                    src={`/flags/${fs.code.toLowerCase()}.png`}
                     alt={fs.name}
                     width={32}
                     height={22}

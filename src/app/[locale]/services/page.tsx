@@ -8,15 +8,15 @@ import ScrollSection from '@/components/ScrollSection';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 
 const serviceImages: Record<string, string> = {
-  'medical-chests': 'https://images.unsplash.com/photo-1586015555751-63bb77f4322a?w=600&q=80',
-  'recertification': 'https://images.unsplash.com/photo-1563260324-5ebeedc8af7c?w=600&q=80',
-  'pharmaceuticals': 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&q=80',
-  'medical-equipment': 'https://images.unsplash.com/photo-1674702703321-b44990d8b6ba?w=600&q=80',
-  'oxygen-services': 'https://images.unsplash.com/photo-1600091474842-83bb9c05a723?w=600&q=80',
-  'telemedical': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80',
-  'drug-alcohol': 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&q=80',
-  'mental-health': 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=80',
-  'reflagging': 'https://images.unsplash.com/photo-1636545256808-c2f40f2b6cdb?w=600&q=80',
+  'medical-chests': '/images/medical-supplies.jpg',
+  'recertification': '/images/first-aid.jpg',
+  'pharmaceuticals': '/images/pharmaceuticals.jpg',
+  'medical-equipment': '/images/medical-equipment.jpg',
+  'oxygen-services': '/images/oxygen.jpg',
+  'telemedical': '/images/telemedical.jpg',
+  'drug-alcohol': '/images/drug-test.webp',
+  'mental-health': '/images/mental-health.jpg',
+  'reflagging': '/images/maritime-flags.webp',
 };
 
 export default function ServicesPage() {

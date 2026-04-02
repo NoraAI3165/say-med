@@ -18,12 +18,12 @@ import {
 } from 'lucide-react';
 
 const IMAGES = {
-  hero: 'https://images.unsplash.com/photo-1636545256808-c2f40f2b6cdb?w=1920&q=80',
-  ship: 'https://images.unsplash.com/photo-1645865406062-872af9faa81a?w=1200&q=80',
-  medical: 'https://images.unsplash.com/photo-1586015555751-63bb77f4322a?w=1200&q=80',
-  ocean: 'https://images.unsplash.com/photo-1631892089521-c62633bf61d5?w=1920&q=80',
-  crew: 'https://images.unsplash.com/photo-1688413399578-14ebdde3666a?w=1200&q=80',
-  port: 'https://images.unsplash.com/photo-1645301792884-2329d48bdcd6?w=1920&q=80',
+  hero: '/images/hero-ship.jpg',
+  ship: '/images/cargo-ship.jpg',
+  medical: '/images/medical-supplies.jpg',
+  ocean: '/images/ocean.jpg',
+  crew: '/images/ship-bridge.jpg',
+  port: '/images/port.jpg',
 };
 
 export default function HomePage() {
