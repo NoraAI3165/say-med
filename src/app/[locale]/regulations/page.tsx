@@ -1,14 +1,13 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
+import Image from 'next/image';
 import { flagStates, type FlagState } from '@/lib/regulations';
+import WorldMap from '@/components/WorldMap';
 import ScrollSection from '@/components/ScrollSection';
 import { Search, ArrowRight, Globe, FileText, Shield, Clock, ExternalLink, CheckCircle } from 'lucide-react';
-
-const GlobeComponent = dynamic(() => import('@/components/Globe'), { ssr: false });
 
 export default function RegulationsPage() {
   const t = useTranslations('regulations');
@@ -47,8 +46,37 @@ export default function RegulationsPage() {
       {/* Globe Section */}
       <ScrollSection className="py-16 lg:py-24 bg-navy-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Full-width map */}
+          <div className="mb-12">
+            <WorldMap onCountrySelect={setSelected} selectedCountry={selected} />
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <GlobeComponent onCountrySelect={setSelected} selectedCountry={selected} />
+            {/* Country grid - left side when selected */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {flagStates.map((fs) => (
+                <button
+                  key={fs.code}
+                  onClick={() => setSelected(fs)}
+                  className={`flex items-center gap-2 p-3 rounded-lg text-left transition-all text-sm ${
+                    selected?.code === fs.code
+                      ? 'bg-gold/20 border border-gold/40'
+                      : 'bg-navy/50 border border-white/5 hover:border-white/20'
+                  }`}
+                >
+                  <Image
+                    src={`https://flagcdn.com/w40/${fs.code.toLowerCase()}.png`}
+                    alt={fs.name}
+                    width={24}
+                    height={16}
+                    className="rounded-sm shrink-0"
+                  />
+                  <span className={selected?.code === fs.code ? 'text-gold font-medium' : 'text-white/70'}>
+                    {fs.name}
+                  </span>
+                </button>
+              ))}
+            </div>
 
             <div className="lg:sticky lg:top-28">
               {selected ? (
@@ -56,7 +84,13 @@ export default function RegulationsPage() {
                   {/* Country header */}
                   <div className="p-6 bg-gold/5 border-b border-gold/10">
                     <div className="flex items-center gap-4">
-                      <span className="text-5xl">{selected.flag}</span>
+                      <Image
+                        src={`https://flagcdn.com/w80/${selected.code.toLowerCase()}.png`}
+                        alt={selected.name}
+                        width={60}
+                        height={40}
+                        className="rounded shadow-lg"
+                      />
                       <div>
                         <h3 className="text-2xl font-bold text-white">{selected.name}</h3>
                         <span className="text-gold text-sm font-medium">{selected.standardKey}</span>
@@ -190,7 +224,13 @@ export default function RegulationsPage() {
                 className="group text-left p-6 rounded-xl border border-gray-100 hover:border-gold/30 hover:shadow-lg transition-all duration-200 bg-white"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-3xl">{fs.flag}</span>
+                  <Image
+                    src={`https://flagcdn.com/w40/${fs.code.toLowerCase()}.png`}
+                    alt={fs.name}
+                    width={32}
+                    height={22}
+                    className="rounded-sm shadow"
+                  />
                   <div>
                     <div className="font-semibold text-navy group-hover:text-gold transition-colors">
                       {fs.name}
