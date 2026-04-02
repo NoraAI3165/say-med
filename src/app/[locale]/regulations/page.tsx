@@ -147,9 +147,9 @@ export default function RegulationsPage() {
                       <p className="text-white/70 text-sm leading-relaxed">{selected.details}</p>
                     </div>
 
-                    {/* Key Documents - Clickable */}
+                    {/* Key Documents - Big clickable buttons */}
                     <div>
-                      <div className="text-white/40 text-xs font-medium mb-2">{t('keyDocuments')}</div>
+                      <div className="text-gold text-xs font-bold uppercase tracking-wider mb-3">{t('keyDocuments')}</div>
                       <div className="space-y-2">
                         {selected.keyDocuments.map((doc, i) => (
                           <a
@@ -157,11 +157,16 @@ export default function RegulationsPage() {
                             href={doc.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 p-2 rounded-lg bg-white/5 hover:bg-gold/10 border border-white/5 hover:border-gold/20 transition-all group"
+                            className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gold/10 hover:bg-gold/20 border border-gold/30 hover:border-gold/50 transition-all group cursor-pointer"
                           >
-                            <FileText className="w-4 h-4 text-gold/60 group-hover:text-gold shrink-0" />
-                            <span className="text-white/70 text-sm group-hover:text-white flex-1">{doc.name}</span>
-                            <Download className="w-3.5 h-3.5 text-white/30 group-hover:text-gold shrink-0" />
+                            <div className="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
+                              <FileText className="w-5 h-5 text-gold" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="text-white font-medium text-sm truncate">{doc.name}</div>
+                              <div className="text-gold/60 text-xs truncate">{doc.url}</div>
+                            </div>
+                            <ExternalLink className="w-4 h-4 text-gold shrink-0" />
                           </a>
                         ))}
                       </div>
