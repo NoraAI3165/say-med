@@ -518,5 +518,10 @@
     "rights": "Tüm hakları saklıdır.",
     "privacy": "Gizlilik Politikası",
     "terms": "Şartlar ve Koşullar"
+  },
+  "cookie": {
+    "message": "Deneyiminizi iyilestirmek icin cerezler kullaniyoruz. Sitemize goz atmaya devam ederek cerez kullanimini kabul etmis olursunuz.",
+    "accept": "Kabul Et",
+    "decline": "Reddet"
   }
 }

@@ -518,5 +518,10 @@
     "rights": "Alle rechten voorbehouden.",
     "privacy": "Privacybeleid",
     "terms": "Voorwaarden"
+  },
+  "cookie": {
+    "message": "Wij gebruiken cookies om uw ervaring te verbeteren. Door verder te bladeren gaat u akkoord met ons cookiegebruik.",
+    "accept": "Accepteren",
+    "decline": "Weigeren"
   }
 }
