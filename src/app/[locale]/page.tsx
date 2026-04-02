@@ -285,7 +285,7 @@ export default function HomePage() {
               <ArrowRight className="w-5 h-5" />
             </Link>
             <a
-              href="tel:+31000000000"
+              href="tel:+902162322333"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-gold/30 text-gold font-semibold rounded-xl hover:bg-gold/5 transition-all text-lg"
             >
               <Phone className="w-5 h-5" />

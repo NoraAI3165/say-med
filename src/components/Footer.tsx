@@ -3,7 +3,14 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/navigation';
 import Image from 'next/image';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Building2 } from 'lucide-react';
+
+const offices = [
+  { name: 'Say-Med Turkey', city: 'Istanbul, Turkey', flag: 'tr' },
+  { name: 'Say-Med Rotterdam', city: 'Rotterdam, Netherlands', flag: 'nl' },
+  { name: 'Say-Med Virginia', city: 'Virginia, United States', flag: 'us' },
+  { name: 'Say-Med Singapore', city: 'Singapore', flag: 'sg' },
+];
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -27,6 +34,17 @@ export default function Footer() {
             <p className="text-sm leading-relaxed mb-6">
               {t('description')}
             </p>
+            {/* Contact */}
+            <div className="space-y-3">
+              <a href="tel:+902162322333" className="flex items-center gap-2 text-sm hover:text-gold transition-colors">
+                <Phone className="w-4 h-4 text-gold shrink-0" />
+                +90 216 232 23 33
+              </a>
+              <a href="mailto:info@say-med.com" className="flex items-center gap-2 text-sm hover:text-gold transition-colors">
+                <Mail className="w-4 h-4 text-gold shrink-0" />
+                info@say-med.com
+              </a>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -39,6 +57,7 @@ export default function Footer() {
                 { href: '/services' as const, label: t('services') },
                 { href: '/regulations' as const, label: t('regulations') },
                 { href: '/products' as const, label: t('products') },
+                { href: '/markets' as const, label: t('markets') },
                 { href: '/about' as const, label: t('about') },
                 { href: '/contact' as const, label: t('contact') },
               ].map((link) => (
@@ -46,6 +65,24 @@ export default function Footer() {
                   <Link href={link.href} className="text-sm hover:text-gold transition-colors">
                     {link.label}
                   </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Our Offices */}
+          <div>
+            <h3 className="text-white font-semibold text-sm tracking-wider mb-6">
+              {t('offices')}
+            </h3>
+            <ul className="space-y-4">
+              {offices.map((office) => (
+                <li key={office.name} className="flex items-start gap-3 text-sm">
+                  <img src={`/flags/${office.flag}.svg`} alt="" className="w-5 h-3.5 rounded-sm mt-0.5 shrink-0" />
+                  <div>
+                    <div className="text-white font-medium">{office.name}</div>
+                    <div className="text-white/50 text-xs">{office.city}</div>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -64,34 +101,6 @@ export default function Footer() {
                   </li>
                 )
               )}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-white font-semibold text-sm tracking-wider mb-6">
-              {t('contactTitle')}
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-sm">
-                <Phone className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                <div>
-                  <div className="text-white font-medium">24/7 Emergency</div>
-                  <a href="tel:+31000000000" className="hover:text-gold transition-colors">
-                    +31 (0) 00 000 0000
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-start gap-3 text-sm">
-                <Mail className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                <a href="mailto:info@say-med.com" className="hover:text-gold transition-colors">
-                  info@say-med.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3 text-sm">
-                <MapPin className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                <span>Rotterdam, The Netherlands</span>
-              </li>
             </ul>
           </div>
         </div>
