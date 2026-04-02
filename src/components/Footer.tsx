@@ -19,9 +19,9 @@ export default function Footer() {
               <Image
                 src="/logos/logo-white.svg"
                 alt="Say-Med"
-                width={160}
-                height={50}
-                className="h-12 w-auto"
+                width={220}
+                height={70}
+                className="h-16 w-auto"
               />
             </div>
             <p className="text-sm leading-relaxed mb-6">
