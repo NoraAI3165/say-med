@@ -40,7 +40,7 @@ export default function RegulationsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* 3D Globe - desktop only */}
             <div>
-              <div className="hidden lg:block">
+              <div className="hidden md:block">
                 <GlobeComponent onCountrySelect={setSelected} selectedCountry={selected} />
               </div>
               {/* Country quick-select grid */}
