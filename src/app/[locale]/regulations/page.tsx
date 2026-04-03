@@ -50,11 +50,13 @@ export default function RegulationsPage() {
       <ScrollSection className="py-16 lg:py-24 bg-navy-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* 3D Globe */}
+            {/* 3D Globe - desktop only */}
             <div>
-              <GlobeComponent onCountrySelect={setSelected} selectedCountry={selected} />
-              {/* Country quick-select grid below globe */}
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 mt-6">
+              <div className="hidden lg:block">
+                <GlobeComponent onCountrySelect={setSelected} selectedCountry={selected} />
+              </div>
+              {/* Country quick-select grid */}
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 lg:mt-6">
                 {flagStates.map((fs) => (
                   <button
                     key={fs.code}
