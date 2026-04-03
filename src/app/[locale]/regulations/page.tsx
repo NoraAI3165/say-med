@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
@@ -8,25 +8,13 @@ import Image from 'next/image';
 import { flagStates, type FlagState } from '@/lib/regulations';
 import { specialRegulations, regulationCategories } from '@/lib/regulation-categories';
 import ScrollSection from '@/components/ScrollSection';
-import { Search, ArrowRight, Globe, FileText, Shield, Clock, ExternalLink, CheckCircle, Download, Anchor, Plane, AlertTriangle, LifeBuoy } from 'lucide-react';
+import { ArrowRight, Globe, FileText, Shield, Clock, ExternalLink, CheckCircle, Anchor, Plane, AlertTriangle, LifeBuoy } from 'lucide-react';
 
 const GlobeComponent = dynamic(() => import('@/components/Globe'), { ssr: false });
 
 export default function RegulationsPage() {
   const t = useTranslations('regulations');
   const [selected, setSelected] = useState<FlagState | null>(null);
-  const [search, setSearch] = useState('');
-
-  const filtered = useMemo(() => {
-    if (!search) return flagStates;
-    const q = search.toLowerCase();
-    return flagStates.filter(
-      (fs) =>
-        fs.name.toLowerCase().includes(q) ||
-        fs.code.toLowerCase().includes(q) ||
-        fs.authority.toLowerCase().includes(q)
-    );
-  }, [search]);
 
   return (
     <div className="pt-20">
@@ -214,68 +202,6 @@ export default function RegulationsPage() {
               )}
             </div>
           </div>
-        </div>
-      </ScrollSection>
-
-      {/* All Regulations Grid */}
-      <ScrollSection className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">{t('allRegulations')}</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">{t('allRegulationsDesc')}</p>
-          </div>
-
-          {/* Search */}
-          <div className="max-w-md mx-auto mb-12">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder={t('searchPlaceholder')}
-                className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-2 focus:ring-gold/20 outline-none transition-all"
-              />
-            </div>
-          </div>
-
-          {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {filtered.map((fs) => (
-              <button
-                key={fs.code}
-                onClick={() => { setSelected(fs); window.scrollTo({ top: 400, behavior: 'smooth' }); }}
-                className="group text-left p-6 rounded-xl border border-gray-100 hover:border-gold/30 hover:shadow-lg transition-all duration-200 bg-white"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <Image
-                    src={`/flags/${fs.code.toLowerCase()}.svg`}
-                    alt={fs.name}
-                    width={32}
-                    height={22}
-                    className="rounded-sm shadow"
-                  />
-                  <div>
-                    <div className="font-semibold text-navy group-hover:text-gold transition-colors">
-                      {fs.name}
-                    </div>
-                    <div className="text-xs text-gray-400">{fs.standardKey}</div>
-                  </div>
-                </div>
-                <p className="text-sm text-gray-500 line-clamp-2">{fs.regulation}</p>
-                <div className="mt-3 flex items-center gap-1 text-xs text-gold/70">
-                  <FileText className="w-3 h-3" />
-                  <span>{fs.keyDocuments.length} documents</span>
-                </div>
-              </button>
-            ))}
-          </div>
-
-          {filtered.length === 0 && (
-            <div className="text-center py-12 text-gray-400">
-              {t('noResults')}
-            </div>
-          )}
         </div>
       </ScrollSection>
 
