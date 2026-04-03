@@ -524,5 +524,35 @@
     "privacyLink": "Privacybeleid",
     "accept": "Accepteren",
     "decline": "Weigeren"
+  },
+  "privacy": {
+    "title": "Privacybeleid",
+    "lastUpdated": "Laatst bijgewerkt: april 2026",
+    "s1Title": "1. Gegevens die wij verzamelen",
+    "s1Text": "Wij verzamelen informatie die u via ons contactformulier verstrekt (naam, e-mail, bedrijf, bericht) en automatisch verzamelde gegevens zoals IP-adres, browsertype en bezochte pagina's via cookies en serverlogboeken.",
+    "s2Title": "2. Hoe wij uw gegevens gebruiken",
+    "s2Text": "Wij gebruiken uw gegevens om vragen te beantwoorden, onze maritieme medische leveringsdiensten te verlenen, relevante service-updates te versturen, onze website te verbeteren en te voldoen aan wettelijke verplichtingen.",
+    "s3Title": "3. Gegevens delen",
+    "s3Text": "Wij verkopen uw persoonlijke gegevens niet. Wij kunnen informatie delen met dienstverleners die ons bijstaan in onze activiteiten (e-mailbezorging, hosting) en wanneer de wet dit vereist.",
+    "s4Title": "4. Cookies",
+    "s4Text": "Onze website gebruikt essentiele cookies voor functionaliteit en optionele analytische cookies om het sitegebruik te begrijpen. U kunt cookievoorkeuren beheren via uw browserinstellingen of onze cookietoestemmingsbanner.",
+    "s5Title": "5. Uw rechten",
+    "s5Text": "Op grond van de AVG en toepasselijke gegevensbeschermingswetten heeft u het recht op inzage, correctie, verwijdering of overdracht van uw persoonlijke gegevens. Neem contact met ons op via info@say-med.com om deze rechten uit te oefenen.",
+    "s6Title": "6. Contact",
+    "s6Text": "Voor privacygerelateerde vragen kunt u contact met ons opnemen via info@say-med.com of telefonisch via +90 216 232 23 33."
+  },
+  "terms": {
+    "title": "Algemene Voorwaarden",
+    "lastUpdated": "Laatst bijgewerkt: april 2026",
+    "s1Title": "1. Diensten",
+    "s1Text": "Say-Med levert maritieme medische benodigdheden, regelgevingsadvies en aanverwante diensten. Alle diensten zijn onderhevig aan beschikbaarheid en toepasselijke maritieme regelgeving van de betreffende vlaggenstaat.",
+    "s2Title": "2. Offertes en bestellingen",
+    "s2Text": "Offertes via onze website of contactformulier zijn indicatief en onder voorbehoud van bevestiging. Bestellingen zijn bindend na schriftelijke bevestiging door Say-Med.",
+    "s3Title": "3. Aansprakelijkheid",
+    "s3Text": "Hoewel wij streven naar nauwkeurigheid, is de regelgevingsinformatie op deze website uitsluitend bedoeld als algemene richtlijn en vormt geen juridisch advies. Raadpleeg altijd de relevante maritieme autoriteiten voor officiele vereisten.",
+    "s4Title": "4. Intellectueel eigendom",
+    "s4Text": "Alle inhoud op deze website, inclusief tekst, logo's, afbeeldingen en ontwerp, is eigendom van Say-Med of haar licentiegevers en wordt beschermd door auteurs- en merkrecht.",
+    "s5Title": "5. Toepasselijk recht",
+    "s5Text": "Deze voorwaarden worden beheerst door de wetten van de Republiek Turkije. Geschillen worden beslecht door de rechtbanken van Istanbul, Turkije."
   }
 }

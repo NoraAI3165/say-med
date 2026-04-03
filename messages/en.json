@@ -524,5 +524,35 @@
     "privacyLink": "Privacy Policy",
     "accept": "Accept",
     "decline": "Decline"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: April 2026",
+    "s1Title": "1. Information We Collect",
+    "s1Text": "We collect information you provide through our contact form (name, email, company, message) and automatically collected data such as IP address, browser type, and pages visited through cookies and server logs.",
+    "s2Title": "2. How We Use Your Information",
+    "s2Text": "We use your information to respond to inquiries, provide our maritime medical supply services, send relevant service updates, improve our website, and comply with legal obligations.",
+    "s3Title": "3. Data Sharing",
+    "s3Text": "We do not sell your personal data. We may share information with service providers who assist in our operations (email delivery, hosting) and when required by law or to protect our rights.",
+    "s4Title": "4. Cookies",
+    "s4Text": "Our website uses essential cookies for functionality and optional analytics cookies to understand site usage. You can manage cookie preferences through your browser settings or our cookie consent banner.",
+    "s5Title": "5. Your Rights",
+    "s5Text": "Under GDPR and applicable data protection laws, you have the right to access, correct, delete, or port your personal data. You may also object to or restrict processing. Contact us at info@say-med.com to exercise these rights.",
+    "s6Title": "6. Contact",
+    "s6Text": "For privacy-related questions, contact us at info@say-med.com or by phone at +90 216 232 23 33. Our data protection practices are overseen from our Istanbul office."
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "lastUpdated": "Last updated: April 2026",
+    "s1Title": "1. Services",
+    "s1Text": "Say-Med provides maritime medical supply, regulatory compliance consulting, and related services. All services are subject to availability and applicable maritime regulations of the relevant flag state.",
+    "s2Title": "2. Quotes & Orders",
+    "s2Text": "Quotes provided through our website or contact form are indicative and subject to confirmation. Orders are binding upon written confirmation from Say-Med. Prices may vary based on delivery location, urgency, and flag state requirements.",
+    "s3Title": "3. Liability",
+    "s3Text": "While we strive for accuracy, the regulatory information on this website is for general guidance only and does not constitute legal advice. Say-Med shall not be liable for decisions made based solely on website content. Always consult with relevant maritime authorities for official requirements.",
+    "s4Title": "4. Intellectual Property",
+    "s4Text": "All content on this website including text, logos, images, and design is the property of Say-Med or its licensors and is protected by copyright and trademark laws. Reproduction without written permission is prohibited.",
+    "s5Title": "5. Governing Law",
+    "s5Text": "These terms are governed by the laws of the Republic of Turkey. Any disputes shall be resolved in the courts of Istanbul, Turkey."
   }
 }

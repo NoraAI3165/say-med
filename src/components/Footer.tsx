@@ -113,10 +113,10 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Say-Med. {t('rights')}
           </p>
           <div className="flex items-center gap-6 text-xs text-white/40">
-            <Link href="/" className="hover:text-white/60 transition-colors">
+            <Link href="/privacy" className="hover:text-white/60 transition-colors">
               {t('privacy')}
             </Link>
-            <Link href="/" className="hover:text-white/60 transition-colors">
+            <Link href="/terms" className="hover:text-white/60 transition-colors">
               {t('terms')}
             </Link>
           </div>

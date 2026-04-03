@@ -524,5 +524,35 @@
     "privacyLink": "Gizlilik Politikasi",
     "accept": "Kabul Et",
     "decline": "Reddet"
+  },
+  "privacy": {
+    "title": "Gizlilik Politikasi",
+    "lastUpdated": "Son guncelleme: Nisan 2026",
+    "s1Title": "1. Toplanan Bilgiler",
+    "s1Text": "Iletisim formumuz araciligiyla sagladiginiz bilgileri (ad, e-posta, sirket, mesaj) ve cerezler ve sunucu gunlukleri araciligiyla otomatik olarak toplanan verileri (IP adresi, tarayici turu, ziyaret edilen sayfalar) topluyoruz.",
+    "s2Title": "2. Bilgilerinizi Nasil Kullaniyoruz",
+    "s2Text": "Bilgilerinizi sorulari yanitmak, denizcilik tibbi tedarik hizmetlerimizi sunmak, ilgili hizmet guncellemeleri gondermek, web sitemizi iyilestirmek ve yasal yukumluluklere uymak icin kullaniyoruz.",
+    "s3Title": "3. Veri Paylasimi",
+    "s3Text": "Kisisel verilerinizi satmiyoruz. Operasyonlarimiza yardimci olan hizmet saglayicilariyla (e-posta teslimi, hosting) ve yasal zorunluluk durumlarinda bilgi paylasabiliriz.",
+    "s4Title": "4. Cerezler",
+    "s4Text": "Web sitemiz islevsellik icin zorunlu cerezler ve site kullanimini anlamak icin istege bagli analiz cerezleri kullanmaktadir. Cerez tercihlerinizi tarayici ayarlariniz veya cerez onay bannerimiz araciligiyla yonetebilirsiniz.",
+    "s5Title": "5. Haklariniz",
+    "s5Text": "KVKK ve ilgili veri koruma yasalari kapsaminda kisisel verilerinize erisme, duzeltme, silme veya tasima hakkiniz vardir. Bu haklarinizi kullanmak icin info@say-med.com adresinden bize ulasin.",
+    "s6Title": "6. Iletisim",
+    "s6Text": "Gizlilikle ilgili sorulariniz icin info@say-med.com adresinden veya +90 216 232 23 33 numarasindan bize ulasin."
+  },
+  "terms": {
+    "title": "Sartlar ve Kosullar",
+    "lastUpdated": "Son guncelleme: Nisan 2026",
+    "s1Title": "1. Hizmetler",
+    "s1Text": "Say-Med denizcilik tibbi malzeme tediriki, mevzuat uyumluluk danismanligi ve ilgili hizmetler sunmaktadir. Tum hizmetler uygunluga ve ilgili bayrak devletinin denizcilik duzenlemelerine tabidir.",
+    "s2Title": "2. Teklifler ve Siparisler",
+    "s2Text": "Web sitemiz veya iletisim formumuz araciligiyla verilen teklifler gosterge nitelgindedir ve onaya tabidir. Siparisler Say-Med'in yazili onayiyla baglayici hale gelir.",
+    "s3Title": "3. Sorumluluk",
+    "s3Text": "Dogruluk icin caba gostermemize ragmen, bu web sitesindeki duzenleyici bilgiler yalnizca genel rehberlik amaclidir ve hukuki tavsiye niteliginde degildir. Resmi gereksinimler icin her zaman ilgili denizcilik otoritelerine danisin.",
+    "s4Title": "4. Fikri Mulkiyet",
+    "s4Text": "Bu web sitesindeki metin, logolar, gorseller ve tasarim dahil tum icerik Say-Med'in veya lisans verenlerinin mulkiyetindedir ve telif hakki yasalariyla korunmaktadir.",
+    "s5Title": "5. Uygulanacak Hukuk",
+    "s5Text": "Bu sartlar Turkiye Cumhuriyeti yasalarina tabidir. Her turlu uyusmazlik Istanbul mahkemelerinde cozumlenecektir."
   }
 }
