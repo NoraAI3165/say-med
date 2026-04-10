@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
@@ -15,6 +15,23 @@ const GlobeComponent = dynamic(() => import('@/components/Globe'), { ssr: false 
 export default function RegulationsPage() {
   const t = useTranslations('regulations');
   const [selected, setSelected] = useState<FlagState | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const fixFlags = () => {
+      if (!gridRef.current) return;
+      gridRef.current.querySelectorAll('img').forEach((img) => {
+        if (!img.complete || img.naturalWidth === 0) {
+          const src = img.getAttribute('src') || '';
+          img.removeAttribute('src');
+          img.setAttribute('src', src);
+        }
+      });
+    };
+    const t1 = setTimeout(fixFlags, 300);
+    const t2 = setTimeout(fixFlags, 1000);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+  }, []);
 
   return (
     <div className="pt-20">
@@ -44,7 +61,7 @@ export default function RegulationsPage() {
                 <GlobeComponent onCountrySelect={setSelected} selectedCountry={selected} />
               </div>
               {/* Country quick-select grid */}
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 lg:mt-6">
+              <div ref={gridRef} className="grid grid-cols-3 sm:grid-cols-4 gap-2 lg:mt-6">
                 {flagStates.map((fs) => (
                   <button
                     key={fs.code}
