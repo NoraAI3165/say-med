@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 500">
+  <defs>
+    <clipPath id="c"><rect width="750" height="500"/></clipPath>
+  </defs>
+  <g clip-path="url(#c)">
+    <path fill="#009e49" d="M0 0h750v500H0z"/>
+    <path fill="#ce1126" d="M750 0H0v500z"/>
+    <path fill="#000" d="M-87.4 500L750-89.1V589.1L-87.4 0z" opacity="1"/>
+    <path fill="#fcd116" d="M-17.4 500L750-19.1v68L-17.4 568zM-157.4 500L750-159.1v68L-157.4 568z" opacity="1"/>
+    <g fill="#fff" transform="translate(270,175)">
+      <polygon points="0,-40 9.27,-12.36 40,-12.36 16.36,4.72 25.09,32.36 0,16 -25.09,32.36 -16.36,4.72 -40,-12.36 -9.27,-12.36" transform="rotate(-10)"/>
+    </g>
+    <g fill="#fff" transform="translate(480,325)">
+      <polygon points="0,-40 9.27,-12.36 40,-12.36 16.36,4.72 25.09,32.36 0,16 -25.09,32.36 -16.36,4.72 -40,-12.36 -9.27,-12.36" transform="rotate(-10)"/>
+    </g>
+  </g>
+</svg>

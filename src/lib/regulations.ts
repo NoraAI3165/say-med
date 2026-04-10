@@ -796,4 +796,22 @@ export const flagStates: FlagState[] = [
     authorityUrl: 'https://www.iomshipregistry.com',
     details: 'The Isle of Man Ship Registry requires medical stores per its Ship Medical Stores Code, which aligns with UK MCA standards. As a Crown Dependency with a quality-focused registry, IOM requirements meet or exceed international standards. Annual inspections are mandatory by IOM-approved providers.',
   },
+  {
+    code: 'KN',
+    name: 'Saint Kitts and Nevis',
+    flag: '\u{1F1F0}\u{1F1F3}',
+    lat: 17.3,
+    lng: -62.7,
+    regulation: 'St. Kitts and Nevis Maritime Act - Medical Stores Requirements',
+    authority: 'St. Kitts and Nevis International Ship Registry (SKNVISR)',
+    standardKey: 'SKN-ISR-MED',
+    chestCategories: ['Category A - Unlimited voyages', 'Category B - Restricted trade areas', 'Category C - Near-coastal and harbour'],
+    inspectionInterval: 'Annual inspection by approved medical supplier',
+    keyDocuments: [
+      { name: 'SKNVISR Maritime Administration', url: 'https://stkittsnevisregistry.net/' },
+      { name: 'ILO MLC 2006', url: 'https://www.ilo.org/media/267866/download' },
+    ],
+    authorityUrl: 'https://stkittsnevisregistry.net',
+    details: 'Saint Kitts and Nevis requires medical stores per ILO MLC 2006 standards. The SKNVISR oversees maritime medical compliance for registered vessels. Medical chests must be inspected annually and maintained according to international maritime health regulations.',
+  },
 ];

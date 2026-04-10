@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const baseUrl = 'https://say-med.com.tr';
+const baseUrl = 'https://say-med.com';
 const locales = ['en', 'tr', 'nl'];
 
 const pages = ['', '/services', '/regulations', '/products', '/about', '/contact'];
