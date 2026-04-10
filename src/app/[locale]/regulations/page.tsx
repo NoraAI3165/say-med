@@ -57,8 +57,8 @@ export default function RegulationsPage() {
                     <span
                       role="img"
                       aria-label={fs.name}
-                      className="w-5 h-3.5 rounded-sm shrink-0 inline-block bg-cover bg-center bg-no-repeat"
-                      style={{ backgroundImage: `url(/flags/${fs.code.toLowerCase()}.svg)` }}
+                      className="w-5 h-3.5 rounded-sm shrink-0 inline-block bg-center bg-no-repeat"
+                      style={{ backgroundImage: `url(/flags/${fs.code.toLowerCase()}.svg)`, backgroundSize: '100% 100%' }}
                     />
                     <span className={selected?.code === fs.code ? 'text-gold font-medium' : 'text-white/60'}>
                       {fs.name}
@@ -77,8 +77,8 @@ export default function RegulationsPage() {
                       <span
                         role="img"
                         aria-label={selected.name}
-                        className="w-[60px] h-[40px] rounded shadow-lg inline-block bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: `url(/flags/${selected.code.toLowerCase()}.svg)` }}
+                        className="w-[60px] h-[40px] rounded shadow-lg inline-block bg-center bg-no-repeat"
+                        style={{ backgroundImage: `url(/flags/${selected.code.toLowerCase()}.svg)`, backgroundSize: '100% 100%' }}
                       />
                       <div>
                         <h3 className="text-2xl font-bold text-white">{selected.name}</h3>
