@@ -104,7 +104,7 @@ export const flagStates: FlagState[] = [
     chestCategories: ['Category A - Unlimited navigation', 'Category B - Less than 175 nm from port', 'Category C - Port operations/coastal'],
     inspectionInterval: 'Annual inspection, 5-year renewal',
     keyDocuments: [
-      { name: 'S.L. 234.51 MLC Rules', url: 'https://www.transport.gov.mt/S-L-234-51.pdf-f5982' },
+      { name: 'S.L. 234.51 MLC Rules', url: 'https://legislation.mt/eli/sl/234.51/eng/pdf' },
       { name: 'EU Directive 92/29/EEC Full Text', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01992L0029-20190726' },
       { name: 'Medical Stores Labelling Notice', url: 'https://www.transport.gov.mt/maritime/merchant-shipping-notices/technical-notices/technical-notice-sls-32-labelling-of-medical-stores-2560' },
     ],
@@ -123,10 +123,10 @@ export const flagStates: FlagState[] = [
     chestCategories: ['Category A - Unlimited voyages', 'Category B - Less than 175 nm', 'Category C - Coastal/harbor'],
     inspectionInterval: 'Annual inspection required',
     keyDocuments: [
-      { name: 'DMS Circulars (Medical Stores)', url: 'https://www.dms.gov.cy/dms/shipping.nsf/All/38B6D4BC8D398A41C22586570027BB45?OpenDocument' },
+      { name: 'DMS Circulars (Medical Stores)', url: 'https://www.gov.cy/dms/en/' },
       { name: 'EU Directive 92/29/EEC', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01992L0029-20190726' },
     ],
-    authorityUrl: 'https://www.dms.gov.cy',
+    authorityUrl: 'https://www.gov.cy/dms/en/',
     details: 'Cyprus implements EU Directive 92/29/EEC with additional national requirements. Medical chests must be inspected by approved service providers. Vessels carrying dangerous goods need additional antidotes.',
   },
   {
@@ -197,7 +197,7 @@ export const flagStates: FlagState[] = [
       { name: 'EU Directive 92/29/EEC (Medical Treatment on Board)', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01992L0029-20190726' },
       { name: 'EU-OSHA Directive Overview', url: 'https://osha.europa.eu/en/legislation/directives/17' },
     ],
-    authorityUrl: 'https://www.hcg.gr',
+    authorityUrl: 'https://www.hcg.gr/en/',
     details: 'Greece, as one of the largest flag states, implements EU medical requirements through PD 376/1995. The Hellenic Coast Guard oversees compliance. Certain medications require Greek-language labeling for vessels with Greek-speaking crew.',
   },
   {
@@ -320,8 +320,8 @@ export const flagStates: FlagState[] = [
     chestCategories: ['Ocean-going vessels', 'Coastal vessels', 'Fishing vessels'],
     inspectionInterval: 'Annual inspection by designated physician',
     keyDocuments: [
-      { name: 'Mariners Act (EN Translation)', url: 'https://www.japaneselawtranslation.go.jp/en/laws/view/4166/en' },
-      { name: 'Seafarma: Japan Regulation Overview', url: 'https://seafarma.nl/regulations/japanese-ship-medical-chest-regulation/' },
+      { name: 'Mariners Act (EN Translation)', url: 'https://www.japaneselawtranslation.go.jp/en/laws' },
+      { name: 'Seafarma: Japan Regulation Overview', url: 'https://seafarma.eu/japanese-ship-medical-chest-regulation/' },
     ],
     authorityUrl: 'https://www.mlit.go.jp',
     details: 'Japan requires medical equipment per the Mariners Act and Ship Safety Act. Medical stores must be inspected by designated physicians. Japanese requirements include traditional medicines in addition to Western pharmaceuticals.',
@@ -375,9 +375,9 @@ export const flagStates: FlagState[] = [
     inspectionInterval: 'Annual inspection by FTA-approved provider',
     keyDocuments: [
       { name: 'ILO MLC 2006 (applies to UAE)', url: 'https://www.ilo.org/media/267866/download' },
-      { name: 'FTA Open Data Portal', url: 'https://opendata.fcsc.gov.ae/federal-transport-authority-land-maritime' },
+      { name: 'FTA Open Data Portal', url: 'https://www.moei.gov.ae/en/services/maritime-transportation.aspx' },
     ],
-    authorityUrl: 'https://www.fta.gov.ae',
+    authorityUrl: 'https://www.moei.gov.ae/en',
     details: 'The UAE FTA requires medical stores based on voyage type. As a growing flag state, the UAE has modernized its maritime medical requirements. Medical stores must account for extreme heat conditions in the Gulf region.',
   },
   // ── European countries (EU Directive 92/29/EEC) ──
@@ -430,7 +430,7 @@ export const flagStates: FlagState[] = [
     inspectionInterval: 'Annual inspection by approved pharmacist',
     keyDocuments: [
       { name: 'EU Directive 92/29/EEC', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01992L0029-20190726' },
-      { name: 'Legifrance - Code des Transports Maritime', url: 'https://www.legifrance.gouv.fr/codes/id/LEGITEXT000023086525/' },
+      { name: 'Legifrance - Code des Transports Maritime', url: 'https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000023086525/' },
     ],
     authorityUrl: 'https://www.mer.gouv.fr',
     details: 'France implements EU Directive 92/29/EEC through Decree No. 2007-1227 governing the dotation medicale de bord. French flag vessels must carry medical chests inspected annually by a pharmacist approved by the Direction des Affaires Maritimes. Labeling in French is mandatory for all medications.',
@@ -448,7 +448,7 @@ export const flagStates: FlagState[] = [
     inspectionInterval: 'Annual inspection by approved pharmacist',
     keyDocuments: [
       { name: 'EU Directive 92/29/EEC', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01992L0029-20190726' },
-      { name: 'Irish Statute Book - S.I. 506/1995', url: 'https://www.irishstatutebook.ie/eli/1995/si/506/made/en/print' },
+      { name: 'Irish Statute Book - S.I. 506/1995', url: 'https://www.irishstatutebook.ie/eli/1997/si/506/made/en/print' },
     ],
     authorityUrl: 'https://www.gov.ie/en/organisation/department-of-transport/',
     details: 'Ireland implements EU Directive 92/29/EEC through S.I. No. 506 of 1995. The Marine Survey Office oversees compliance. Irish flag vessels must carry medical chests appropriate to their trading area. Controlled drugs require a Department of Health licence.',
@@ -484,9 +484,9 @@ export const flagStates: FlagState[] = [
     inspectionInterval: 'Annual inspection by approved provider',
     keyDocuments: [
       { name: 'EU Directive 92/29/EEC', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01992L0029-20190726' },
-      { name: 'CAM Luxembourg Maritime', url: 'https://cam.gouvernement.lu/' },
+      { name: 'CAM Luxembourg Maritime', url: 'https://cam.gouvernement.lu/fr.html' },
     ],
-    authorityUrl: 'https://cam.gouvernement.lu',
+    authorityUrl: 'https://cam.gouvernement.lu/fr.html',
     details: 'Luxembourg, despite being landlocked, operates a significant maritime registry. The Commissariat aux Affaires Maritimes implements EU Directive 92/29/EEC for Luxembourg-flagged vessels. Medical chests are inspected by CAM-approved providers at any international port.',
   },
   {
@@ -540,7 +540,7 @@ export const flagStates: FlagState[] = [
       { name: 'EU Directive 92/29/EEC', url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01992L0029-20190726' },
       { name: 'BOE - Real Decreto 258/1999', url: 'https://www.boe.es/buscar/act.php?id=BOE-A-1999-4635' },
     ],
-    authorityUrl: 'https://www.mitma.gob.es/marina-mercante',
+    authorityUrl: 'https://www.transportes.gob.es/marina-mercante',
     details: 'Spain implements EU Directive 92/29/EEC through Real Decreto 258/1999 on ship medicine chests (botiquines). The DGMM oversees compliance. Spanish-language labeling is mandatory. Additional anti-malarial provisions apply for vessels trading in tropical waters including the Canary Islands route.',
   },
   {
@@ -593,7 +593,7 @@ export const flagStates: FlagState[] = [
     inspectionInterval: 'Annual inspection by AMSA-approved pharmacist',
     keyDocuments: [
       { name: 'Marine Order 11 - Living and Working Conditions', url: 'https://www.legislation.gov.au/Series/F2013L00533' },
-      { name: 'AMSA Medical Fitness Guidelines', url: 'https://www.amsa.gov.au/vessels-operators/seafarer-safety/medical-fitness' },
+      { name: 'AMSA Medical Fitness Guidelines', url: 'https://www.amsa.gov.au/qualifications-training/international-qualifications/medical-fitness-international-certificates' },
     ],
     authorityUrl: 'https://www.amsa.gov.au',
     details: 'Australia requires medical stores per Marine Order 11, administered by AMSA. Three categories are defined based on vessel operations and distance from medical facilities. Additional provisions apply for vessels operating in remote areas of the Great Barrier Reef and Australian Antarctic Territory.',
@@ -610,7 +610,7 @@ export const flagStates: FlagState[] = [
     chestCategories: ['Category A - International navigation', 'Category B - Cabotage and inland waterways', 'Category C - Port support and harbour craft'],
     inspectionInterval: 'Annual inspection by ANVISA-approved provider',
     keyDocuments: [
-      { name: 'DPC NORMAM Regulations', url: 'https://www.marinha.mil.br/dpc/normas-maritimas' },
+      { name: 'DPC NORMAM Regulations', url: 'https://www.marinha.mil.br/dpc/node/3535' },
       { name: 'ILO MLC 2006 (applies to Brazil)', url: 'https://www.ilo.org/media/267866/download' },
     ],
     authorityUrl: 'https://www.marinha.mil.br/dpc',
@@ -647,7 +647,7 @@ export const flagStates: FlagState[] = [
     inspectionInterval: 'Annual inspection during USCG vessel examination',
     keyDocuments: [
       { name: '46 CFR Part 184 - Subchapter T', url: 'https://www.ecfr.gov/current/title-46/chapter-I/subchapter-T/part-184' },
-      { name: 'USCG Marine Safety Information Bulletins', url: 'https://www.dco.uscg.mil/Our-Organization/Assistant-Commandant-for-Prevention-Policy-CG-5P/Inspections-Compliance-CG-5PC-/Commercial-Vessel-Compliance/Marine-Safety-Information-Bulletins/' },
+      { name: 'USCG Marine Safety Information Bulletins', url: 'https://www.dco.uscg.mil/Featured-Content/Mariners/Marine-Safety-Information-Bulletins-MSIB/' },
     ],
     authorityUrl: 'https://www.uscg.mil',
     details: 'The United States requires medical equipment per 46 CFR with USCG oversight. Requirements vary by vessel class and route. Controlled substances require DEA authorization. The USCG conducts inspections as part of regular vessel examinations. American flag vessels must also carry the Ship Medical Chest and First Aid at Sea guide.',
@@ -682,10 +682,10 @@ export const flagStates: FlagState[] = [
     chestCategories: ['Category A - International voyages', 'Category B - Near-sea navigation', 'Category C - Coastal and harbour'],
     inspectionInterval: 'Annual inspection by MPB-approved provider',
     keyDocuments: [
-      { name: 'Maritime and Port Bureau Regulations', url: 'https://www.motc.gov.tw/en/home.jsp?id=568' },
+      { name: 'Maritime and Port Bureau Regulations', url: 'https://www.motc.gov.tw/en/index' },
       { name: 'ILO MLC 2006 Guidelines (reference)', url: 'https://www.ilo.org/media/267866/download' },
     ],
-    authorityUrl: 'https://www.mpb.gov.tw',
+    authorityUrl: 'https://www.motcmpb.gov.tw/En/',
     details: 'Taiwan requires medical equipment on ships per the Seafarer Act, administered by the Maritime and Port Bureau. Three categories are defined based on trading area. Chinese-language labeling is required. Medical stores must be inspected by MPB-authorized providers at designated ports.',
   },
   {
@@ -718,7 +718,7 @@ export const flagStates: FlagState[] = [
     chestCategories: ['Category A - Unlimited voyages', 'Category B - Within 150 nm', 'Category C - Harbour and coastal'],
     inspectionInterval: 'Annual inspection by BSMA-approved surveyor',
     keyDocuments: [
-      { name: 'BSMA Regulatory Notices', url: 'https://www.bermudashipping.bm/regulatory-notices' },
+      { name: 'BSMA Regulatory Notices', url: 'https://bsma.bm/merchant-shipping-notices/' },
       { name: 'ILO MLC 2006', url: 'https://www.ilo.org/media/267866/download' },
     ],
     authorityUrl: 'https://www.bermudashipping.bm',
@@ -736,7 +736,7 @@ export const flagStates: FlagState[] = [
     chestCategories: ['Category A - Unlimited voyages', 'Category B - Short international voyages', 'Category C - Near-coastal operations'],
     inspectionInterval: 'Annual inspection by CISR-approved provider',
     keyDocuments: [
-      { name: 'CISR Shipping Notices', url: 'https://www.cishipping.com/legislation-guidelines/shipping-notices' },
+      { name: 'CISR Shipping Notices', url: 'https://www.cishipping.com/policy-advice/shipping-notices' },
       { name: 'ILO MLC 2006', url: 'https://www.ilo.org/media/267866/download' },
     ],
     authorityUrl: 'https://www.cishipping.com',
@@ -772,10 +772,10 @@ export const flagStates: FlagState[] = [
     chestCategories: ['Category A - Unlimited voyages', 'Category B - Restricted trade areas', 'Category C - Near-coastal and harbour'],
     inspectionInterval: 'Annual inspection by approved medical supplier',
     keyDocuments: [
-      { name: 'SVG Maritime Administration', url: 'https://www.svgmarad.com/' },
+      { name: 'SVG Maritime Administration', url: 'http://www.svg-marad.com/' },
       { name: 'ILO MLC 2006', url: 'https://www.ilo.org/media/267866/download' },
     ],
-    authorityUrl: 'https://www.svgmarad.com',
+    authorityUrl: 'http://www.svg-marad.com',
     details: 'Saint Vincent and the Grenadines requires medical stores per ILO MLC 2006 standards. As one of the larger open registries, the SVG Maritime Administration oversees compliance for a diverse global fleet. Medical chests must be inspected annually by approved maritime medical suppliers.',
   },
   {
@@ -790,7 +790,7 @@ export const flagStates: FlagState[] = [
     chestCategories: ['Category A - Unlimited voyages', 'Category B - Within 150 nm', 'Category C - Near-coastal and sheltered'],
     inspectionInterval: 'Annual inspection by IOM Registry-approved provider',
     keyDocuments: [
-      { name: 'IOM Ship Registry Technical Guidance', url: 'https://www.iomshipregistry.com/technical/' },
+      { name: 'IOM Ship Registry Technical Guidance', url: 'https://www.iomshipregistry.com/notices-legislation/tans/' },
       { name: 'ILO MLC 2006', url: 'https://www.ilo.org/media/267866/download' },
     ],
     authorityUrl: 'https://www.iomshipregistry.com',
