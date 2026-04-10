@@ -5,6 +5,7 @@ import { routing } from '@/routing';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieConsent from '@/components/CookieConsent';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -63,6 +64,7 @@ export default async function LocaleLayout({
           <Footer />
           <CookieConsent />
         </NextIntlClientProvider>
+        <GoogleAnalytics gaId="G-DQ5CY2FCJL" />
       </body>
     </html>
   );
