@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
@@ -15,24 +15,6 @@ const GlobeComponent = dynamic(() => import('@/components/Globe'), { ssr: false 
 export default function RegulationsPage() {
   const t = useTranslations('regulations');
   const [selected, setSelected] = useState<FlagState | null>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const fixFlags = () => {
-      if (!gridRef.current) return;
-      gridRef.current.querySelectorAll('img').forEach((img) => {
-        if (!img.complete || img.naturalWidth === 0) {
-          const src = img.getAttribute('src') || '';
-          img.removeAttribute('src');
-          img.setAttribute('src', src);
-        }
-      });
-    };
-    const t1 = setTimeout(fixFlags, 300);
-    const t2 = setTimeout(fixFlags, 1000);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
-  }, []);
-
   return (
     <div className="pt-20">
       {/* Hero */}
@@ -61,7 +43,7 @@ export default function RegulationsPage() {
                 <GlobeComponent onCountrySelect={setSelected} selectedCountry={selected} />
               </div>
               {/* Country quick-select grid */}
-              <div ref={gridRef} className="grid grid-cols-3 sm:grid-cols-4 gap-2 lg:mt-6">
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 lg:mt-6">
                 {flagStates.map((fs) => (
                   <button
                     key={fs.code}
@@ -72,13 +54,11 @@ export default function RegulationsPage() {
                         : 'bg-navy/50 border border-white/5 hover:border-white/20'
                     }`}
                   >
-                    <img
-                      src={`/flags/${fs.code.toLowerCase()}.svg`}
-                      alt={fs.name}
-                      width={20}
-                      height={14}
-                      loading="eager"
-                      className="rounded-sm shrink-0"
+                    <span
+                      role="img"
+                      aria-label={fs.name}
+                      className="w-5 h-3.5 rounded-sm shrink-0 inline-block bg-cover bg-center bg-no-repeat"
+                      style={{ backgroundImage: `url(/flags/${fs.code.toLowerCase()}.svg)` }}
                     />
                     <span className={selected?.code === fs.code ? 'text-gold font-medium' : 'text-white/60'}>
                       {fs.name}
@@ -94,12 +74,11 @@ export default function RegulationsPage() {
                   {/* Country header */}
                   <div className="p-6 bg-gold/5 border-b border-gold/10">
                     <div className="flex items-center gap-4">
-                      <img
-                        src={`/flags/${selected.code.toLowerCase()}.svg`}
-                        alt={selected.name}
-                        width={60}
-                        height={40}
-                        className="rounded shadow-lg"
+                      <span
+                        role="img"
+                        aria-label={selected.name}
+                        className="w-[60px] h-[40px] rounded shadow-lg inline-block bg-cover bg-center bg-no-repeat"
+                        style={{ backgroundImage: `url(/flags/${selected.code.toLowerCase()}.svg)` }}
                       />
                       <div>
                         <h3 className="text-2xl font-bold text-white">{selected.name}</h3>
