@@ -4,7 +4,7 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/navigation';
-import Image from 'next/image';
+
 import { flagStates, type FlagState } from '@/lib/regulations';
 import { specialRegulations, regulationCategories } from '@/lib/regulation-categories';
 import ScrollSection from '@/components/ScrollSection';
@@ -55,7 +55,7 @@ export default function RegulationsPage() {
                         : 'bg-navy/50 border border-white/5 hover:border-white/20'
                     }`}
                   >
-                    <Image
+                    <img
                       src={`/flags/${fs.code.toLowerCase()}.svg`}
                       alt={fs.name}
                       width={20}
@@ -76,7 +76,7 @@ export default function RegulationsPage() {
                   {/* Country header */}
                   <div className="p-6 bg-gold/5 border-b border-gold/10">
                     <div className="flex items-center gap-4">
-                      <Image
+                      <img
                         src={`/flags/${selected.code.toLowerCase()}.svg`}
                         alt={selected.name}
                         width={60}
