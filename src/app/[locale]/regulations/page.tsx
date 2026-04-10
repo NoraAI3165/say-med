@@ -44,7 +44,7 @@ export default function RegulationsPage() {
               </div>
               {/* Country quick-select grid */}
               <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 lg:mt-6">
-                {flagStates.map((fs) => (
+                {[...flagStates].sort((a, b) => a.name.localeCompare(b.name)).map((fs) => (
                   <button
                     key={fs.code}
                     onClick={() => setSelected(fs)}
@@ -54,11 +54,14 @@ export default function RegulationsPage() {
                         : 'bg-navy/50 border border-white/5 hover:border-white/20'
                     }`}
                   >
-                    <span
-                      role="img"
-                      aria-label={fs.name}
-                      className="w-5 h-3.5 rounded-sm shrink-0 inline-block bg-center bg-no-repeat"
-                      style={{ backgroundImage: `url(/flags/${fs.code.toLowerCase()}.svg)`, backgroundSize: '100% 100%' }}
+                    <img
+                      src={`/flags/${fs.code.toLowerCase()}.svg`}
+                      alt={fs.name}
+                      width={20}
+                      height={14}
+                      loading="eager"
+                      decoding="sync"
+                      className="w-5 h-3.5 rounded-sm shrink-0 inline-block object-contain"
                     />
                     <span className={selected?.code === fs.code ? 'text-gold font-medium' : 'text-white/60'}>
                       {fs.name}
@@ -74,11 +77,14 @@ export default function RegulationsPage() {
                   {/* Country header */}
                   <div className="p-6 bg-gold/5 border-b border-gold/10">
                     <div className="flex items-center gap-4">
-                      <span
-                        role="img"
-                        aria-label={selected.name}
-                        className="w-[60px] h-[40px] rounded shadow-lg inline-block bg-center bg-no-repeat"
-                        style={{ backgroundImage: `url(/flags/${selected.code.toLowerCase()}.svg)`, backgroundSize: '100% 100%' }}
+                      <img
+                        src={`/flags/${selected.code.toLowerCase()}.svg`}
+                        alt={selected.name}
+                        width={60}
+                        height={40}
+                        loading="eager"
+                        decoding="sync"
+                        className="w-[60px] h-[40px] rounded shadow-lg inline-block object-contain"
                       />
                       <div>
                         <h3 className="text-2xl font-bold text-white">{selected.name}</h3>
