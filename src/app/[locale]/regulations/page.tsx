@@ -35,7 +35,7 @@ export default function RegulationsPage() {
       </section>
 
       {/* Globe Section */}
-      <ScrollSection className="py-16 lg:py-24 bg-navy-dark">
+      <section className="py-16 lg:py-24 bg-navy-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* 3D Globe - desktop only */}
@@ -60,6 +60,7 @@ export default function RegulationsPage() {
                       alt={fs.name}
                       width={20}
                       height={14}
+                      loading="eager"
                       className="rounded-sm shrink-0"
                     />
                     <span className={selected?.code === fs.code ? 'text-gold font-medium' : 'text-white/60'}>
@@ -203,7 +204,7 @@ export default function RegulationsPage() {
             </div>
           </div>
         </div>
-      </ScrollSection>
+      </section>
 
       {/* Special Regulations: Offshore, Aviation, Dangerous Goods, Safety */}
       <ScrollSection className="py-16 lg:py-24 bg-cream">
